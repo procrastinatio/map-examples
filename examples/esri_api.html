@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <title>map.geo.admin.ch WMTS & ESRI API</title>
+          <link rel="stylesheet" type="text/css"
+          href="http://serverapi.arcgisonline.com/jsapi/arcgis/2.2/js/dojo/dijit/themes/claro/claro.css">
+            <link href='http://fonts.googleapis.com/css?family=Voltaire' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="style.css" type="text/css">
+      
+        
+    <style>
+       html, body {
+            height: 100%;
+            width: 100%;
+            padding: 0;
+        }
+        .esriScalebar {
+            padding: 20px 20px;
+        }
+
+        #map {
+            padding: 0;
+            border: solid 1px black;
+            width: 600px;
+            height: 400px;
+            margin: 50px;
+        }
+
+        #citationInfo {
+            position: absolute;
+            color: black;
+            text-shadow:2px 2px 2px #333333;
+            font-weight: bold;
+            font-size: 10pt;
+            left: 10px;
+            bottom: 10px;
+            z-Index: 999;
+        }
+        #level {
+		  background-color: #ffffff;
+           width: 600px; height: 100px;
+           overflow: auto;
+           padding: 5px;
+         }
+        /* .layerTile {
+            border: 1px solid lime !important;
+        }  */
+    </style>
+    <script type="text/javascript">var djConfig = {parseOnLoad: true};</script>
+    <script type="text/javascript" src="http://serverapi.arcgisonline.com/jsapi/arcgis/?v=2.2"></script>
+    <script src="matrixDefs.js"></script>
+    <script src="esri_api.js"></script>
+    </head>
+    <body class="claro examples">
+		<h1 id="title">ESRI API and map.geo.admin.ch WMTS</h1>
+		<div id="tags">esri, wmts, arcgis, api, geoadmin</div>
+		<div class="content">
+        <p id="shortdesc">
+            Demonstrate how to use WMTS tiles with the ESRI API.
+        </p>
+        <div id="docs">
+            Using ESRI ArcGIS <a href="http://help.arcgis.com/en/webapi/javascript/arcgis/help/jssamples_start.htm#jssamples/layers_wmts.html">API
+            for Javascript</a> with the OGC WMTS service from www.geo.admin.ch.<br /><br />
+            For more info, see the ESRI Web API: <br />
+            <ul>
+                 <li><a href="http://help.arcgis.com/EN/webapi/javascript/arcgis/help/jssamples_start.htm#jssamples/layers_wmtslayerresourceinfo.html">WMTS Layer - Ressource info</a>
+                 <li>class <a href="http://help.arcgis.com/en/webapi/javascript/arcgis/help/jsapi_start.htm#jsapi/wmtslayer.htm">WMTSLayer</a> for more details<br />
+            </ul><br />
+            View the <a href="esri_api.js" target="_blank">esri_api.js</a> source to see how this is done.
+             <!-- <pre><div id="level"></div></pre> -->
+        </div>
+        </div>  
+        <div dojotype="dijit.layout.BorderContainer" design="headline" gutters="false"
+                      style="width: 100%; height: 100%; margin: 0;">
+            <div id="map" dojotype="dijit.layout.ContentPane" region="center">
+                 <span id="info" style="position:absolute; right:150px; bottom:5px; font-size: 0.75em; color:#000; z-index:50;"></span>
+            <div id="citationInfo">
+                <a href="http://api.geo.admin.ch/1.0.0/WMTSCapabilities.xml" target="_blank">WMTS</a>
+                      served by <a href="http://www.geo.admin.ch/">GeoAdmin</a>
+            </div>
+        </div>
+       
+</div>
+     
+        
+    </body>
+</html>
