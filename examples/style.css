@@ -83,7 +83,7 @@ background:#f2f2f2 /*url(/images/noise.png?1323110915) top left */;
 }  
 
 body > div > div {
-background:#f8f8f8 url(/images/noise.png?1323110915) top left;
+background:#f8f8f8;
 border-right:1px solid #e0e0e0;
 }
 
@@ -333,7 +333,7 @@ margin:.2em 0 0;
 body > nav {
 position:relative;
 background-color:#ccc;
-background:url(/images/noise.png?1323110915),linear-gradient(#e0e0e0,#cccccc,#b0b0b0);
+background:linear-gradient(#e0e0e0,#cccccc,#b0b0b0);
 border-top:1px solid #f2f2f2;
 border-bottom:1px solid #8c8c8c;
 padding-top:.35em;
@@ -408,8 +408,8 @@ border:1px solid #888;
  * Map Examples Specific
  */
 .smallmap {
-    width: 450px;
-    height: 300px;
+    width: 550px;
+    height: 350px;
     border: 1px solid #ccc;
 }
 #tags {
@@ -490,7 +490,7 @@ font-size:.8em;
 color:#888;
 text-shadow:#d9d9d9 0 1px;
 background-color:#ccc;
-background:url(/images/noise.png?1323110915),linear-gradient(#e0e0e0,#cccccc,#b0b0b0);
+/* background:url(/images/noise.png?1323110915),linear-gradient(#e0e0e0,#cccccc,#b0b0b0); */
 border-top:1px solid #f2f2f2;
 position:relative;
 padding-top:1em;
@@ -864,7 +864,7 @@ padding-bottom:.15em;
 -khtml-border-bottom-right-radius:.3em;
 border-bottom-right-radius:.3em;
 text-align:center;
-background:#f8f8f8 url(/images/noise.png?1323110915) top left;
+background:#f8f8f8 /*url(/images/noise.png?1323110915)*/ top left;
 border-bottom:1px solid #e0e0e0;
 border-right:1px solid #e0e0e0;
 content:"\00BB";
