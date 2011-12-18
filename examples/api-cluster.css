@@ -1,0 +1,56 @@
+            #photos {
+                height: 100px;
+                width: 512px;
+                position: relative;
+                white-space: nowrap;
+            }
+            .shift {
+                height: 25px;
+                line-height: 25px;
+                background-color: #fefefe;
+                text-align: center;
+                position: absolute;
+                bottom: 10px;
+                font-size: 8px;
+                font-weight: bold;
+                color: #696969;
+                width: 25px;
+            }
+            #scroll-start {
+                left: 0px;
+            }
+            #scroll-end {
+                right: 0px;
+            }
+            #scroll {
+                left: 30px;
+                width: 452px;
+                height: 100px;
+                overflow: hidden;
+                position: absolute;
+                bottom: 0px;
+            }
+            #photos ul {
+                position: absolute;
+                bottom: 0px;
+                padding: 0;
+                margin: 0;
+            }
+            #photos ul.start {
+                left: 0px;
+            }
+            #photos ul.end {
+                right: 80px;
+            }
+            #photos ul li {
+                padding 10px;
+                margin: 0;
+                list-style: none;
+                display: inline;
+            }
+            img.thumb {
+                height: 30px;
+            }
+            img.big {
+                height: 90px;
+            }
