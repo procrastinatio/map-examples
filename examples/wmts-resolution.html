@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <title>GeoAdmin API Example</title>
+        <link rel="stylesheet" href="../theme/default/style.css" type="text/css">
+        <link rel="stylesheet" href="style.css" type="text/css">
+        <link href='http://fonts.googleapis.com/css?family=Voltaire' rel='stylesheet' type='text/css'>
+
+    </head>
+    <body class="examples" onload="init()">
+        <h1 id="title">Mixing WMTS source with different resolutions</h1>
+        <div id="tags">wmts, geoadmin, tilematrix, resolution, extent</div>
+        <div class="content">
+        <p id="shortdesc">
+            Mixing WMTS sources having <em>TileMatrix</em> using different <em>TileOrigin</em> and <em>resolution</em>  .
+        </p>
+        <div id="map" class="smallmap"></div>
+        <div id="docs">
+            <p>With the new client zoom from OpenLayers, it is now possible to mix tiles using different extent 
+            defintiion and different resolution.</p>
+            <p>In this example, we superpose the canton's border layer (<em>ch.swisstopo.gg25-kanton-flaeche.fill</em>) using resolutions <em>[10000, 5000, 2500, 1000, 500, 200, 100, 50, 25, 10, 5, 2, 1, 0.5]</em>
+            on the top of a base layer (<em>ch.swisstopo.pixelkarte-farbe</em>) using the standard GeoAdmin resolution (<em>[650.0, 500.0, 250.0, 100.0, 50.0, 20.0, 10.0, 5.0, 2.5, 2.0, 1.5, 1.0, 0.5]</em>).
+            <p>So if the <em>gridResolution</em> of a layer doesn't not match the one of the map, the tiles are stretch, hence the variations in the canton's border width and the blurry
+            apsect at certain scales.</p>
+            
+            <p>The used projections however, have to be the same.</p>
+            <p>View the <a href="wmts-resolution.js" target="_blank">wmts-resolution.js</a> source to see how this is done.</p>
+        </div>
+        <div id="output" style=""></div>
+        <div id="dpi"></div>
+        </div>  
+        <script src="http://api.geo.admin.ch/loader.js"></script>
+        <script src="matrixDefs.js"></script>
+        <script type="text/javascript" src="wmts-resolution.js"> </script>
+    </body>
+</html>
+
