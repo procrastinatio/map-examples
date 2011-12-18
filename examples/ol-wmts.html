@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <title>GeoAdmin API Example</title>
+        <link rel="stylesheet" href="style.css" type="text/css">
+        <link href='http://fonts.googleapis.com/css?family=Voltaire' rel='stylesheet' type='text/css'>
+    </head>
+    <body class="examples" onload="init()">
+        <h1 id="title">Using GeoAdmin WMTS with pure OpenLayers</h1>
+        <div id="tags">wmts, openlayers, resolution</div>
+        <div class="content">
+        <p id="shortdesc">
+            Using GeoAdmin WMTS service with only OpenLayers (neither GeoExt nor GeoAdmin).
+        </p>
+        <div id="map" class="smallmap"></div>
+        <div id="docs">
+            <p>Sometime, you may only want to use the WMTS service from GeoAdmin with OpenLayers (too complicated, don't trust swisstopo, etc.).</p>
+            <p>GeoAdmin WMTS service, though compliant with the OGC standard, use some not very common features:<br />
+            <ul>
+                <li>It uses it's own projection <em>EPSG:21781</em>. So you can't use it with say, Google Map or OSM</li>
+                <li>The resolutions have to be defined manually, as they do not follow a regular pattern ([650.0, 500.0, 250.0, 100.0, 50.0, 20.0, 10.0, 5.0, 2.5, 2.0, 1.5, 1.0, 0.5]). </li>
+                <li>It's uses a so called <em>Dimension</em>, which are timestamp for each layers.</li>
+                <li>It's use the <em>REST</em> request encoding, unlike most common WMTS services</li>
+            </ul>
+            <p>But beside this, it is easy to use! View the <a href="ol-wmts.js" target="_blank">ol-wmts.js</a> source to see how this is done.</p>
+            <p>Check the official <a href="http://api.geo.admin.ch/main/wsgi/doc/build/services/sdiservices.html#wmts" target="_blank">documentation</a> for more details.</p>
+            <p>Do not forget to add the <em>pro4js</em> library and add the definition for <em>EPSG:21781</em> (LV03)!</p>
+            
+            <p>N.B. You have to <a href="http://www.swisstopo.admin.ch/internet/swisstopo/en/home/products/services/web_services/webaccess.html" target="_blank">register</a> to use the WMTS service on your website.</p>
+            
+        </div>
+        </div> 
+        <script src="http://api.geo.admin.ch/main/wsgi/lib/proj4js/proj4js/lib/proj4js-compressed.js"></script>
+        <script src="http://api.geo.admin.ch/main/wsgi/lib/openlayers/lib/OpenLayers.js"></script>
+        <script src="matrixDefs.js"></script>
+        <script type="text/javascript" src="ol-wmts.js"> </script>
+    </body>
+</html>
+
