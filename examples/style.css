@@ -73,13 +73,14 @@ transition:color .5s;
 }
 
 html {
-background:#252525 url(/images/line-tile.png?1323110915) top left;
+background:#252525 /*url(/images/line-tile.png?1323110915) top left */;
 }
 
+
 body > div {
-background:#f2f2f2 url(/images/noise.png?1323110915) top left;
-border-bottom:1px solid #bfbfbf;
-}
+background:#f2f2f2 /*url(/images/noise.png?1323110915) top left */;
+/* border-bottom:1px solid #bfbfbf; */
+}  
 
 body > div > div {
 background:#f8f8f8 url(/images/noise.png?1323110915) top left;
@@ -403,7 +404,81 @@ font-size:.8em;
 border:1px solid #888;
 }
 
+/**
+ * Map Examples Specific
+ */
+.smallmap {
+    width: 512px;
+    height: 256px;
+    border: 1px solid #ccc;
+}
+#tags {
+    display: none;
+}
 
+#docs p {
+    margin-bottom: 0.5em;
+}
+
+.examples {
+ background-color:#f2f2f2;
+ font-family: 'Voltaire', 'Lucida Grande', Verdana, Geneva, Lucida, Arial, Helvetica, sans-serif;
+ font-size: 100%;
+ margin-right: auto;
+ margin-left: auto;
+}
+
+.content {
+  padding: 10px;
+}
+
+
+.examples #title {
+  background-color: #CCCCCC;
+  border-top: 1px solid #F2F2F2;
+  border-bottom: 1px solid #8C8C8C;
+  /*padding-top: .35em;
+  padding-bottom: .35em;
+  padding-right: 0 */
+  padding: .35em 0 .35em .5em
+}
+
+.examples  pre, .examples code {
+    margin: 1.5em 0;
+    white-space: pre;
+}
+.examples  pre,.examples  code {
+    font: 1em 'andale mono', 'lucida console', monospace;
+    line-height:1.5;
+}
+.examples a[href] {
+    color: #436976;
+    background-color: transparent;
+}
+
+.examples h1, .examples h2, .examples h3, {
+    color: #003a6b;
+    background-color: transparent;
+    font: 100% 'Voltaire', 'Lucida Grande', Verdana, Geneva, Lucida, Arial, Helvetica, sans-serif;
+    margin: 0;
+    padding-top: 0.5em;
+}
+.examples h1 {
+    font-size: 130%;
+    margin-bottom: 0.5em;
+    border-bottom: 1px solid #fcb100;
+}
+.examples h2 {
+    font-size: 120%;
+    margin-bottom: 0.5em;
+    border-bottom: 1px solid #aaa;
+}
+.examples h3 {
+    font-size: 110%;
+    margin-bottom: 0.5em;
+    text-decoration: underline;
+}
+/*
 .no-placeholder body > nav .search {
 background:#f2f2f2 url(/images/search.png?1323110915) .3em .25em no-repeat;
 text-indent:1.3em;
@@ -1162,7 +1237,7 @@ content:'';
 margin-bottom:.5em;
 display:block;
 }
-
+*/
 body > footer {
 font-size:.8em;
 color:#888;

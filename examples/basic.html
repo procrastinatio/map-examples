@@ -7,18 +7,24 @@
         <title>OpenLayers Example</title>
         <link rel="stylesheet" href="../theme/default/style.css" type="text/css">
         <link rel="stylesheet" href="style.css" type="text/css">
+        <link href='http://fonts.googleapis.com/css?family=Voltaire' rel='stylesheet' type='text/css'>
+
     </head>
-    <body onload="init()">
+    <body class="examples" onload="init()">
         <h1 id="title">GeoAdmin API Example</h1>
         <div id="tags">simple, basic</div>
+        <div class="content">
         <p id="shortdesc">
-            Demonstrate the simplest possbile map.
+            Demonstrate the simpliest possible map using the GeoAdmin API.
         </p>
         <div id="map" class="smallmap"></div>
         <div id="docs">
-            <p>This is the most simple example demonstrating the use of the GeoAdmin API with the default layer and controls.</p>
+            <p>This is the most simple example demonstrating the use of the 
+            <a href="http://api.geo.admin.ch/" target="_blank"></a>GeoAdmin API</a> with 
+            the default layer and controls.</p>
             <p>View the <a href="basic.js" target="_blank">basic.js</a> source to see how this is done.</p>
         </div>
+        </div>  
         <script src="http://api.geo.admin.ch/loader.js?mode=full"></script>
         <script src="basic.js"></script>
     </body>
