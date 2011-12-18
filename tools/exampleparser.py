@@ -116,9 +116,13 @@ def getSvnInfo(path):
 def getGitInfo(path):
     h = os.popen('git log --max-count=1 --date=iso --pretty=format:"%H,%an,%ad" ' + path)
     log = h.read()
-    print log
-    commit, author, date = log.split(',')
-    h.close()
+    commit = author = date = None
+    try:
+        commit, author, date = log.split(',')
+    except:
+        pass
+    finally:
+        h.close()
     d = {
         'commit': commit,
         'author': author,
