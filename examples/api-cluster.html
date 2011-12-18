@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+        <title>GeoAdmin Cluster Strategy Example</title>
+        <link rel="stylesheet" href="style.css" type="text/css">
+        <link rel="stylesheet" href="api-cluster.css" type="text/css">
+        <link href='http://fonts.googleapis.com/css?family=Voltaire' rel='stylesheet' type='text/css'>
+        <script src="http://api.geo.admin.ch/loader.js?mode=full"></script>
+        <script src="Jugl.js"></script>
+        <script src="animator.js"></script>
+        <script type="text/javascript" src="api-cluster.js"></script>
+   <body class="examples" onload="init()">
+        <h1 id="title">Cluster Strategy Example</h1>
+        <div id="tags">
+            vector, feature, stylemap, wfs, cluster, strategy, cleanup, geoadmin
+        </div> 
+        <div class="content">       
+        <p id="shortdesc">
+            Uses a cluster strategy to render points representing clusters of features.
+        </p>
+        <div id="map" style="width: 600px; height:400px"></div>
+        <div id="docs">
+            <p>Not all classes of OpenLayers are inlcuded per default in the GeoAdmin API build, the cluster strategy 
+            for instance. If you want to use this class, you will have to use <em>loader.js?mode=fulll</em> to get a build with the full 
+            OpenLayers libraries (this build is about 25% bigger than the normal build).</p>
+            <p>This exampled has been adapted from OpenLayers</p> 
+            <p>View the <a href="api-cluster.js" target="_blank">api-cluster.js</a> source to see how this is done.</p>
+        </div>
+        <div id="photos"></div>
+        <p>Hover over a cluster on the map to see the photos it includes.</p>
+        <div style="display: none;">
+            <div id="template">
+                <div class="shift" id="scroll-start">&lt;&lt;</div>
+                <div id="scroll">
+                    <ul id="list" class="start">
+                        <li jugl:repeat="feature features">
+                            <a jugl:attributes="href feature.attributes.img_url;
+                                                id 'link-' + repeat.feature.index"
+                               target="_blank">
+                                <img jugl:attributes="src feature.attributes.img_url;
+                                                      title feature.attributes.title;
+                                                      id 'photo-' + repeat.feature.index"
+                                     class="thumb" />
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="shift" id="scroll-end">&gt;&gt;</div>
+            </div>
+        </div>
+        </div>
+    </body>
+</html>
+
