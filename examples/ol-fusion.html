@@ -11,23 +11,27 @@
 
     </head>
     <body class="examples" onload="init()">
-        <h1 id="title">GeoAdmin API loading Google Fusion Table</h1>
+        <h1 id="title">GeoAdmin API loading Google Fusion Table (II)</h1>
         <div id="tags">geoadmin,mf-chsdi,api,openlayers,vector,google,fusion,table,jsonp,cross-domain,advanced</div>
         <div class="content">
         <p id="shortdesc">
-            Loading Google Fusion Table into GeoAdmin Map.
+            Loading Google Fusion Table into GeoAdmin Map (II).
         </p>
         <div id="map" class="smallmap"></div>
         <div id="docs">
-            <p>Displaying data from <a href="http://www.google.com/fusiontables/Home/" 
-            target="_blank"></a>Google Fusion Table service</a> into the GeoAdmin. Fusion Table now offer the possibility to get a kind
-            of JSON format instead of a CSV file which makes it easier to integrate a table into OpenLayers.</p> 
+            <p>Using a more OpenLayeresque way (i.e. using Protocol, Strategy and Format) to load data from <a href="http://www.google.com/fusiontables/Home/"
+            target="_blank"></a>Google Fusion Table</a> into the GeoAdmin by:
+             <ul>
+            <li>using an embrionic <em>OpenLayers.Format.GoogleFusion</em></li>
+            <li>modifying the <em>OpenLayers.Protocol.Script</em> to fit Fusion Table service</li>
+            </ul>
             <p>You can mouse over the feature to check it is real OpenLayers Features.</p>
-            <p>View the <a href="api-fusion.js" target="_blank">api-fusion.js</a> source to see how this is done.</p>
+            <p>View the <a href="ol-fusion.js" target="_blank">ol-fusion.js</a> source to see how this is done.</p>
         </div>
         </div>  
         <script src="http://api.geo.admin.ch/loader.js?mode=full"></script>
         <script src="lib/OpenLayers.Format.GoogleFusion.js"></script>
-        <script src="api-fusion.js"></script>
+        <script src="lib/OpenLayers.Protocol.Script.js"></script>
+        <script src="ol-fusion.js"></script>
     </body>
 </html>
