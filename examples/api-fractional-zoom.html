@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <title>GeoAdmin API Example</title>
+        <link rel="stylesheet" href="../theme/default/style.css" type="text/css">
+        <link rel="stylesheet" href="style.css" type="text/css">
+        <link href='http://fonts.googleapis.com/css?family=Voltaire' rel='stylesheet' type='text/css'>
+    </head>
+    <body class="examples" onload="init()">
+        <h1 id="title">Fractional zoom GeoAdmin API Example</h1>
+        <div id="tags">zoomlevel, unlimited zoom, scale, geoadmin, mf-chsdi,api, openlayers</div>
+        <div class="content">
+        <p id="shortdesc">
+            Demonstrate the use of fractional (or non-discrete) zoom level with GeoAdmin API.
+        </p>
+        <div id="map" class="smallmap"></div>
+       <label for="fractional">Fractional Zoom</label>(zoom: <span id="zoom"></span>)<br />
+
+        <div id="docs">
+            <p>Setting the map.fractionalZoom property to true allows zooming to an arbitrary level (between the min and max resolutions). This can be demonstrated by shift-dragging a box to zoom to an arbitrary extent (from the OpenLayers.org examples).</p>
+            <p>View the <a href="api-fractional-zoom.js" target="_blank">api-fractional-zoom.js</a> source to see how this is done.</p>
+        </div>
+        </div>  
+        <script src="http://api.geo.admin.ch/loader.js"></script>
+        <script src="api-fractional-zoom.js"></script>
+    </body>
+</html>
