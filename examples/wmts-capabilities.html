@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <title>GeoAdmin WMTS Capabilities</title>
+        <link rel="stylesheet" href="../theme/default/style.css" type="text/css">
+        <link rel="stylesheet" href="style.css" type="text/css">
+        <link href='http://fonts.googleapis.com/css?family=Voltaire' rel='stylesheet' type='text/css'>
+
+    </head>
+    <body class="examples" onload="init()">
+        <h1 id="title">WMTS Capabilities GeoAdmin API Example</h1>
+        <div id="tags">wmts,capabilities, geoadmin, mf-chsdi,api, openlayers</div>
+        <div class="content">
+        <p id="shortdesc">
+            Adding layers from WMTS GetCapabilities into GeoAdmin API.
+        </p>
+        <div id="map" style="width: 900px; height: 700px" class="smallmap"></div>
+        <div id="pixel" style="background-color: rgb(0, 0, 0); width: 20px; height: 20px"></div>
+        <div id="docs">
+            <p>This example show how to add WMTS layers from a <a href="http://wmts.geo.admin.ch/1.0.0/WMTSCapabilities.xml" target="_blank">GetCapabilities</a> 
+            document. You just need to speicify that some configuration are missing with <em>capabilitiesNeeded: true</em> and point with <em>url</em> to
+            a GetCapabilities document.</p>
+            <p>View the <a href="wmts-capabilities.js" target="_blank">wmts-capabilities.js</a> source to see how this is done.</p>
+        </div>
+        </div>  
+        <script src="http://api.geo.admin.ch/loader.js"></script>
+        <script src="wmts-capabilities.js"></script>
+    </body>
+</html>
