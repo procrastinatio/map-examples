@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+        <title>GeoAdmin Panorami Example</title>
+        <link rel="stylesheet" href="style.css" type="text/css">
+        <link href='http://fonts.googleapis.com/css?family=Voltaire' rel='stylesheet' type='text/css'>
+        <script src="Jugl.js"></script>
+        <script src="animator.js"></script>
+       
+   <body class="examples" onload="init()">
+        <h1 id="title">Geoadmin and poor man's time serie</h1>
+        <div id="tags">
+            history, dufour, siegfried, time serie, geoadmin,
+        </div> 
+        <div class="content">       
+        <p id="shortdesc">
+            Uses GeoAdmin to several map side by side.
+        </p>
+        <div id="maps" style="width: 840px; height 400px;">
+           <!--<div id="map1" style="position: absolute; top: 200px; 400px; left:100px; width: 280px; height:400px"></div>
+           <div id="map2" style="position: absolute; top: 200px; left:400px; width: 280px;height:400px"></div>
+           <div id="map3" style="position: absolute; top: 200px; left:700px; width: 280px; height:400px"></div> -->
+           
+            <div id="map1" style="float:left; width: 280px; height:400px"></div>
+           <div id="map3" style="float: right; margin 10px;width: 280px; height:400px"></div>
+           <div id="map2" style="float:right; width: 280px; height:400px"></div>
+        </div>
+        <div id="docs">
+            <p>Maps from different period are snapshot of the landscape. Displaying thesemaps side-by-side enables historians
+            and enthousiaste alike to see the evolution of the landscape and mapping techniques.</p>
+            <p>The three displayed maps are (left to right):<br />
+            <ul>
+              <li><a href="http://api.geo.admin.ch/bodsearch/details/ch.swisstopo.hiks-dufour?lang=en&print=true" target="_blank">Carte Dufour (1845 to 1865)</a></li>
+              <li><a href="http://api.geo.admin.ch/bodsearch/details/ch.swisstopo.hiks-siegfried?lang=en&print=true" target="_blank">Carte Siegfried (1870 to 1926)</a></li>
+              <li><a href="http://api.geo.admin.ch/bodsearch/details/ch.swisstopo.pixelkarte-farbe?lang=en&print=true" target="_blank">Carte national (today)</a></li>
+             </ul>
+             </p>
+            <p>View the <a href="time-series.js" target="_blank">time-serie.js</a> source to see how this is done.</p>
+        </div>
+        <script src="http://api.geo.admin.ch/loader.js?mode=light"></script>
+        <script src="http://api.geo.admin.ch/main/wsgi/lib/openlayers/lib/OpenLayers/Layer/Markers.js"></script>
+        <script src="http://api.geo.admin.ch/main/wsgi/lib/openlayers/lib/OpenLayers/Marker.js"></script>
+        <script src="http://api.geo.admin.ch/main/wsgi/lib/openlayers/lib/OpenLayers/Icon.js"></script>
+        <script type="text/javascript" src="time-series.js"></script>
+    </body>
+</html>
+
