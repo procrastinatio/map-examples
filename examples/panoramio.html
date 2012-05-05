@@ -7,9 +7,7 @@
         <title>GeoAdmin Panorami Example</title>
         <link rel="stylesheet" href="style.css" type="text/css">
         <link href='http://fonts.googleapis.com/css?family=Voltaire' rel='stylesheet' type='text/css'>
-        <script src="Jugl.js"></script>
-        <script src="animator.js"></script>
-       
+      
    <body class="examples" onload="init()">
         <h1 id="title">GeoAdmin and Panoramio Example</h1>
         <div id="tags">
@@ -19,13 +17,19 @@
         <p id="shortdesc">
             Uses GeoAdmin to display photos from Panoramio.
         </p>
-        <div id="map" style="width: 600px; height:400px"></div>
-        <div id="docs">
+        
+        <div id="maps" style="width: 1124px; height 400px;">
+          <div id="map"   style="float:left; width: 600px; height:400px"></div>
+          <div id="photo" style="float:right; max-width:500px; margin: 0 10px; 0 0; max-height:500px"></div>
+       </div>
+        <div id="docs" style="width: 600px;">
             <p>Displaying geo tagged photos from <a href="http://www.panoramio.com/api/data/api.html">Panoramio</a> on GeoAdmin
-            API. Using an <em>OpenLayers.Strategy.BBOX</em>, we get the 20 most popular photos fitting the map area each time the map is zoomed or paned.</p>
+            API. Using an <em>OpenLayers.Strategy.BBOX</em>, we get the 50 most popular photos fitting the map area each time the map is zoomed or paned.</p>
             <p></p> 
-            <p>View the <a href="panoramio.js" target="_blank">panoramio.js</a> source to see how this is done.</p>
+            <p>View the <a href="panoramio.js" target="_blank">panoramio.js</a> and <a href="lib/OpenLayers.Format.Panoramio.js" target="_blank">OpenLayers.Format.Panoramio.js</a> source to see how this is done.</p>
         </div>
+       </div>
+
         <script src="http://api.geo.admin.ch/loader.js?mode=full"></script>
         <script src="lib/OpenLayers.Format.Panoramio.js"></script>
         <script type="text/javascript" src="panoramio.js"></script>

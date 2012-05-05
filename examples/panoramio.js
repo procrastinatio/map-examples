@@ -1,4 +1,4 @@
-var map, photos;
+var map, photos, popup;
 
 function init() {
 
@@ -10,7 +10,7 @@ function init() {
     });
 
     var style = new OpenLayers.Style({
-        externalGraphic: "${img_url}",
+        externalGraphic: "${photo_file_url}",
         pointRadius: 30
     });
 
@@ -30,23 +30,43 @@ function init() {
                 size: 'thumbnail'
 
             },
-	    filterToParams: function(filter, params) {
-                    // example to demonstrate BBOX serialization
-                    if (filter.type === OpenLayers.Filter.Spatial.BBOX) {
-		        var bounds = filter.value;
-			params.minx = bounds.left;
-			params.miny = bounds.bottom;
-			params.maxx = bounds.right;
-			params.maxy = bounds.top;
-                        params.bbox = filter.value.toArray();
-                    }
-                    return params;
-                },
+            filterToParams: function(filter, params) {
+                // example to demonstrate BBOX serialization
+                if (filter.type === OpenLayers.Filter.Spatial.BBOX) {
+                    var bounds = filter.value;
+                    params.minx = bounds.left;
+                    params.miny = bounds.bottom;
+                    params.maxx = bounds.right;
+                    params.maxy = bounds.top;
+                }
+                return params;
+            },
             callbackKey: 'callback',
-	    format: new OpenLayers.Format.Panoramio()
+            format: new OpenLayers.Format.Panoramio()
             }),
         styleMap: new OpenLayers.StyleMap(style)
+        });
+
+    var highlightCtrl = new OpenLayers.Control.SelectFeature(photos, {
+        hover: true,
+        highlightOnly: false,
+        renderIntent: "temporary",
+        eventListeners: {
+            featurehighlighted: function(feat) {
+                var attributes = feat.feature.attributes;
+                var msg = OpenLayers.String.format("<i>${photo_title}</i><img src=\"http://mw1.google.com/mw-panoramio/photos/medium/${photo_id}.jpg\" />", attributes);
+                var output = document.getElementById("photo");
+                output.innerHTML = msg;
+            },
+            featureunhighlighted: function() {
+                var output = document.getElementById("photo");
+                output.innerHTML = "";
+
+            }
+        }
     });
+    map.addControl(highlightCtrl);
+    highlightCtrl.activate();
 
     map.addLayer(photos);
 
