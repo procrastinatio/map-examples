@@ -10,8 +10,8 @@ function init() {
             url: "http://api.geo.admin.ch/feature/geometry",
             callbackKey: "cb",
             params: {
-                layers: 'ch.swisstopo.gg25-bezirk-flaeche.fill',
-                ids: '211,217,218,1827,1831'
+                layers: 'ch.swisstopo.swissboundaries3d-bezirk-flaeche.fill',
+                ids: '247,249,250,1827,1831'
             }
         }),
         styleMap: new OpenLayers.StyleMap({
