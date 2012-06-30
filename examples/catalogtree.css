@@ -1,0 +1,190 @@
+/* catalog tree, styles taken from CHSDI TreePanel */
+
+.geoadmin-treepanel .treelayericon,
+.geoadmin-treepanel .treelayericon-queryable {
+    display: none;
+}
+
+.geoadmin-treepanel ul, .geoadmin-treepanel li {
+ list-style: none; 
+}
+.geoadmin-treepanel .x-tree-node-expanded .x-tree-node-icon {
+    background-image: url("images/folder-open.gif");
+}
+
+.geoadmin-treepanel .x-tree-node-leaf .x-tree-node-icon{
+    /* background-image:url(http://api.geo.admin.ch/main/wsgi/GeoAdmin.ux/TreePanel/images/leaf.gif);  */
+    background-image: none
+}
+
+.geoadmin-treepanel .x-tree-node-collapsed .x-tree-node-icon{
+    background-image:url(http://api.geo.admin.ch/main/wsgi/GeoAdmin.ux/TreePanel/images/folder.gif);
+}
+
+.geoadmin-treepanel .x-tree-lines .x-tree-elbow{
+    background-image:url(http://api.geo.admin.ch/main/wsgi/GeoAdmin.ux/TreePanel/images/elbow.gif);
+}
+
+.geoadmin-treepanel .x-tree-lines .x-tree-elbow-plus{
+    background-image:url(http://api.geo.admin.ch/main/wsgi/GeoAdmin.ux/TreePanel/images/elbow-plus.gif);
+}
+
+.geoadmin-treepanel .x-tree-lines .x-tree-elbow-minus{
+    background-image:url(images/elbow-minus.gif);
+    /*color: #ff0000;*/
+}
+
+.geoadmin-treepanel .x-tree-lines .x-tree-elbow-end{
+    background-image:url(http://api.geo.admin.ch/main/wsgi/GeoAdmin.ux/TreePanel/images/elbow-end.gif);
+}
+
+.geoadmin-treepanel .x-tree-lines .x-tree-elbow-end-plus{
+    background-image:url(http://api.geo.admin.ch/main/wsgi/GeoAdmin.ux/TreePanel/images/elbow-end-plus.gif);
+}
+
+.geoadmin-treepanel .x-tree-node-expanded a span{
+    color: #0069a3;
+}
+
+.geoadmin-treepanel .x-tree-lines .x-tree-elbow-end-minus{
+    background-image:url(images/elbow-end-minus.gif);
+    /*color: #ff0000;*/
+}
+
+.geoadmin-treepanel .x-tree-lines .x-tree-elbow-line{
+    background-image:url(http://api.geo.admin.ch/main/wsgi/GeoAdmin.ux/TreePanel/images/elbow-line.gif);
+}
+
+.geoadmin-treepanel .x-tree-node .x-tree-node-over {
+  background-color: #ffffff;
+}
+
+.geoadmin-treepanel .x-tree-node .x-tree-selected {
+    background-color: #ffffff;
+    color: red;
+}
+
+.geoadmin-treepanel .checkboxOff {
+  background-position: -17px 1px;
+}
+
+.geoadmin-treepanel .x-tree-node-el {
+    position: relative;
+    padding-right: 45px;
+}
+
+.geoadmin-treepanel .x-tree-node-el a {
+    white-space: normal;
+}
+
+.geoadmin-treepanel div.x-tree-node-leaf a.x-tree-node-anchor span {
+    margin-left: -30px;
+}
+
+.geoadmin-treepanel input.x-tree-node-cb {
+    visibility: hidden;
+}
+
+/* layer tree (selected layers) */
+.geoadmin-layertree .x-tree-node-el {
+    white-space: normal;
+}
+
+.geoadmin-layertree .x-tree-node-el {
+    position: relative;
+}
+
+.geoadmin-layertree .gx-tree-layer-actions .open {
+    top: 0;
+    margin-top: 0;
+    padding: 0;
+}
+.ext-ie .geoadmin-layertree .gx-tree-layer-actions .open {
+    top: 0 !important;
+    left: 3px !important;
+}
+.geoadmin-layertree .gx-tree-layer-actions .close {
+    bottom: 0;
+
+/* tools (actions) */
+.geoadmin-treepanel .layerNodeTools {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 45px;
+  height: 19px;
+}
+.geoadmin-treepanel .layerNodeTools div {
+  float: left;
+}
+.geoadmin-treepanel .treelayerpipe {
+  width: 1px;
+  height: 19px !important;
+  cursor: pointer;
+  background-image:url(http://api.geo.admin.ch/main/wsgi/GeoAdmin.ux/TreePanel/images/lt_pipe.png);
+}
+.geoadmin-treepanel .treelayerlink {
+  width: 17px;
+  height: 19px !important;
+  cursor: pointer;
+  background-image:url(http://api.geo.admin.ch/main/wsgi/GeoAdmin.ux/TreePanel/images/info_button_black.png);
+}
+.geoadmin-treepanel .checkboxOff,
+.geoadmin-treepanel .checkboxOn {
+  margin-left: 2px;
+  padding: 0 !important;
+  width: 19px;
+  height: 19px !important;
+  cursor: pointer;
+  background-image: url(images/lt_selection-sprite.png);
+  background-position: 0px -19px;
+}
+.geoadmin-treepanel .checkboxOff {
+  background-position: -17px 1px;
+}
+.geoadmin-treepanel .nodeTP3selected .treelayerlink {
+  background-image:url(http://api.geo.admin.ch/main/wsgi/GeoAdmin.ux/TreePanel/images/info_button_red.png);
+}
+
+.olControlOverviewMapRectReplacement {
+    background-image: url("images/overview_replacement.gif")
+}
+.geoadmin-layertree .gx-tree-layer-actions .open,
+.geoadmin-layertree .gx-tree-layer-actions .close {
+    background-image: url("images/lt_open-close_options.png");
+}
+
+.infobox .x-window-mc {
+    background-color: white;
+}
+
+/*blue graphic for ngdi*/
+
+.x-toolbar .x-btn-over .collapse {
+    background-image: url(images/tb_fullscreen_logo_over.png);
+}
+
+.x-toolbar .x-btn-over .print {
+    background-image: url(images/tb_print_logo_over.png);
+}
+
+.x-toolbar .x-btn-over .tools {
+    background-image: url(images/tb_tools_logo_over.png);
+}
+
+.navigationhistory_previous:hover,
+.navigationhistory_next:hover {
+    background-image: url("images/navigationhistory_over.png") !important;
+}
+
+.x-tool-infoTool {
+   background-image:url(images/info_logo_red.png);
+   margin-top:-3px;
+   height: 19px;
+}
+
+.olControlPanel {
+    top: 282px !important;
+}
+
+

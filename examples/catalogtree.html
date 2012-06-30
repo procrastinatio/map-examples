@@ -1,0 +1,113 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta name="generator" content=
+  "HTML Tidy for Linux/x86 (vers 11 February 2007), see www.w3.org" />
+  <meta http-equiv="Content-Type" content="text/html; charset=us-ascii" />
+  <meta name="viewport" content=
+  "width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+
+  <title>Custom CatalogTree GeoAdmin API Example</title>
+  <link rel="stylesheet" href="../theme/default/style.css" type="text/css" />
+ 
+  <link href='http://fonts.googleapis.com/css?family=Voltaire' rel='stylesheet' type=
+  'text/css' />
+  <link rel="stylesheet" href="catalogtree.css" type="text/css" />
+</head>
+
+<body class="examples" onload="init()">
+  <h1 id="title">Custom CatalogTree GeoAdmin API Example</h1>
+
+  <div id="tags">
+    catalogtree, tree, geoadmin, mf-chsdi,api, openlayers
+  </div>
+
+  <div class="content">
+    <p id="shortdesc">Demonstrate how to customize the GeoAdmin API CatalogTree.</p>
+
+    <p>I've got this simple question via the <a href="https://groups.google.com/group/geoadmin-api" target="_blank">GeoAdmin Api Google
+    Group</a>: <b>How can I use KML files in a tree-like menu in the <a href=    "http://api.geo.admin.ch/" target="_blank"></a>GeoAdmin API ?</b></p>
+
+    <h2>1/ First step: Using the CatalogTree with custom branches and adding a tree look-and-feel</h2>
+
+    <ul>
+      <li>Use the custom CSS (copy it from <a href="catalogtree.css">catalogtree.css</a>)</li>
+
+      <li>Add the custom class to the CatalogTree with <em>cls: 'geoadmin-treepanel'</em></li>
+
+      <li>You may use any of the layers referenced with these <a href="http://api.geo.admin.ch/main/wsgi/doc/build/api/faq/index.html#which-layers-are-available"
+      target="_blank">ids</a></li>
+      <li>Build your own Catalogtree, have a look at the <em>App.catalogConfig.geodata1</en> to see in <a href="catalogtree.js">catalogtree-config.js</a> for an 
+      example. Add it to the <em>CatalogTree</em> config object.</li>
+    </ul>
+
+    <div id="menu" style="width: 400px; float:left">
+      <div id="catalogtree1" style="float: left; margin:10px !important;width:380px;">
+      </div>
+
+      <div id="layertree1" style=
+      "float: left;margin:10px !important;width:385px;height: 340px;"></div>
+    </div>
+
+    <div id="map1" class="smallmap" style="float:right"></div>
+
+
+  <div style="clear:both"></div>
+
+  <h2>2/ Second step: adding custom layers</h2>
+
+  <ul>
+    <li>If you want to use layers not listed, you have to add it before to use them.</li>
+
+    <li>Layers are created and added to the map only when you select them in the <em>CatalogTree</em>. Per default, only layer of type 'wmts', 'wms' and 'aggregate' are
+    possible</li>
+
+    <li>You may use any of the layers referenced with these <a href="http://api.geo.admin.ch/main/wsgi/doc/build/api/faq/index.html#which-layers-are-available"
+    target="_blank">ids</a></li>
+    <li>Look at the <em>App.geoCatLayers.wmts-custom-layer</em> and <em>App.geoCatLayers.wms-custom-layer</em> in <a href="catalogtree-config.js">catalogtree-config.js</a> to
+    see which parameters to add to the config object for each layer. 
+  </ul>
+
+  <div id="menu" style="width: 400px; float:left">
+    <div id="catalogtree2" style="float: left; margin:10px !important;width:380px;">
+    </div>
+
+    <div id="layertree2" style=
+    "float: left;margin:10px !important;width:385px;height: 340px;"></div>
+  </div>
+
+  <div id="map2" class="smallmap" style="float:right"></div>
+
+  <div style="clear:both"></div>
+
+  <h2>3/ Third step. Adding custom format to the map, i.e. KML, GPX...</h2>
+  
+  <p>If you want to add a vector layer, you have to overload the <em>GeoAdmin._Layers.prototype.createLayer</em> method to support your format.
+  In this example, we use a KML layer (any  supported OpenLayers should be fine).</p>
+
+  <div id="menu" style="width: 400px; float:left">
+    <div id="catalogtree3" style="float: left; margin:10px !important;width:380px;">
+    </div>
+
+    <div id="layertree3" style=
+    "float: left;margin:10px !important;width:385px;height: 340px;"></div>
+  </div>
+
+  <div id="map3" class="smallmap" style="float:right"></div>
+
+  <div id="docs">
+    <div style="clear:both"></div>
+
+    <p>View the <a href="catalogtree.js" target="_blank">catalogtree.js</a> and <a href="catalogtree-config.js" target="_blank">catalogtree-config.js</a> sources to see how
+    this is done.</p>
+  </div>
+</div> 
+<script src="http://api.geo.admin.ch/loader.js" type="text/javascript"></script>
+<script src="catalogtree-config.js" type="text/javascript"></script>
+<script src="catalogtree.js" type="text/javascript"></script>
+ <link rel="stylesheet" href="style.css" type="text/css" />
+</body>
+</html>

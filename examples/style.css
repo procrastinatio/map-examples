@@ -16,9 +16,10 @@ position:relative;
 margin:0 auto;
 }
 
+/*
 ol,ul {
 list-style:none;
-}
+} */
 
 table {
 border-collapse:collapse;
@@ -697,6 +698,12 @@ margin-right:300px;
 padding-top:27.5px;
 padding-bottom:27.5px;
 }
+
+.content ul {
+list-style-type:disc;
+margin-left: 10px;
+padding-left:10px
+} 
 
 aside.sidebar {
 width:260px;
