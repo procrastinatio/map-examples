@@ -333,7 +333,7 @@ App.geoCatLayers = {
         "layer": "KML",
         "alternate_title": "BLN (KML)",
         "copyright": "BAFU",
-        "url": "bln-style.kml",
+        "url": "data/bln-style.kml",
         "copyright_link": "http://www.bafu.admin.ch/index.html?lang=de",
         "layertype": "kml",
         "id": "kml",
