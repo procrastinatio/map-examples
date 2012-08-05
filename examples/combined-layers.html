@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <title>GeoAdmin Agreggate Map Example</title>
+        <link rel="stylesheet" href="../theme/default/style.css" type="text/css">
+        <link rel="stylesheet" href="style.css" type="text/css">
+        <link href='http://fonts.googleapis.com/css?family=Voltaire' rel='stylesheet' type='text/css'>
+
+    </head>
+    <body class="examples" onload="init()">
+        <h1 id="title">Aggregate layer GeoAdmin API Example</h1>
+        <div id="tags">geoadmin, mf-chsdi,api, openlayers, wmts, aggregate, layers, tiles</div>
+        <div class="content">
+        <p id="shortdesc">Combine and rearrange your way layers of the GeoAdmin API.</p>
+        Zooming in/out: <input type="checkbox" id="zoominout" checked="checked" onclick="zoomInAndOut()"/></p><p>Displayed layer: <em><span id="displayed-layer"></span></em></p>
+        <div id="map" class="smallmap"></div>
+        
+        <div id="docs">
+            <p>Sometime, layers which logically belongs together are in two separated layers. In this example we'll combine the 'CadastralWebMap (<em>ch.kantone.cadastralwebmap-farbe</em>)at large scale,
+            with the the TLM-Map (<em>ch.swisstopo.tml3d-hintergrund-karte</em>) at smaller one. This is done using a so called aggregate layer we'll give the
+            name <em>org.procrastinatio.combined-background</em> and by defining new sclae limits.</p>
+            <p>Please, remember, both canton Wallis and Sankt-Gallen have not published their cadastral map, and some area in the mountains are also not covered ba this map.</p>
+            <p>View the <a href="combined-layers.js" target="_blank">combined-layers.js</a> source to see how this is done.</p>
+        </div>
+        </div>  
+        <script src="http://api.geo.admin.ch/loader.js"></script>
+        <script src="combined-layers.js"></script>
+    </body>
+</html>
