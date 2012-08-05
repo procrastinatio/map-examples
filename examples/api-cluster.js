@@ -7,7 +7,7 @@ function init() {
         div: "map",
         bgLayer: 'ch.swisstopo.pixelkarte-farbe'
     });
-    OpenLayers.ProxyHost = (window.location.host == "localhost") ? "/cgi-bin/proxy.cgi?url=": "/cgi-bin/printproxy.cgi?url=";
+    OpenLayers.ProxyHost = (window.location.host == "localhost") ? "/cgi-bin/proxy.cgi?url=": "/cgi-bin/proxy.cgi?url=";
 
     var style = new OpenLayers.Style({
         pointRadius: "${radius}",
