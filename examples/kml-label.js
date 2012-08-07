@@ -6,7 +6,7 @@ function init() {
     _map = _api.createMap({
         div: "map"
     });
-    var layer = createLayer("BLN with style and labels", "bln-style.kml");
+    var layer = createLayer("BLN with style and labels", "data/bln-style.kml");
     _map.addLayer(layer);
 }
 
