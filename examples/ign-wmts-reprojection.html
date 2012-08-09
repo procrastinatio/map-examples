@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <title>IGN API projection mixing example</title>
+        <link rel="stylesheet" href="../theme/default/style.css" type="text/css">
+        <link rel="stylesheet" href="style.css" type="text/css">
+        <link href='http://fonts.googleapis.com/css?family=Voltaire' rel='stylesheet' type='text/css'>
+    </head>
+    <body class="examples">
+        <h1 id="title">Projection fun with IGN API Example</h1>
+        <div id="tags">projection, mercator, equirectangular, wmts, ign, openlayers</div>
+        <div class="content">
+        <p id="shortdesc">
+            Mixing Mercator and Equirectangular layers in the IGN API.
+        </p>
+        <div id="map" style="width: 600px; height: 400px;"></div>
+        <div id="docs">
+            <p>Show how to overlay a Mercator WMTS layer on top of the Map equirectangular projection in <a href="http://api.ign.fr//" target="_blank"></a>IGN API</a></p>
+            <p>View the <a href="ign-wmts-reprojection.js" target="_blank">ign-wmts-reprojection.js</a> source to see how this is done.</p>
+        </div>
+        </div>
+        <script type="text/javascript" charset="utf-8" src="http://api.ign.fr/geoportail/api/js/2.0.0beta/Geoportal.js"></script>
+        <script type="text/javascript" charset="utf-8" src="http://api.ign.fr/tech-docs-js/examples/js/utils.js"></script>
+        <script src="ign-wmts-reprojection.js"></script>
+    </body>
+</html>
