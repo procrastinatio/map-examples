@@ -9,17 +9,11 @@ function init() {
     var map1 = new GeoAdmin.Map("map1", {
         doZoomToMaxExtent: true
     });
-    map1.switchComplementaryLayer('voidLayer', {
-        opacity: 0
-    });
     map1.addLayerByName("ch.swisstopo.hiks-dufour");
     maps.push(map1);
 
     var map2 = new GeoAdmin.Map("map2", {
         doZoomToMaxExtent: true
-    });
-    map2.switchComplementaryLayer('voidLayer', {
-        opacity: 1
     });
     map2.addLayerByName("ch.swisstopo.hiks-siegfried");
 
@@ -29,12 +23,14 @@ function init() {
         doZoomToMaxExtent: true
     });
     map3.switchComplementaryLayer('ch.swisstopo.pixelkarte-farbe', {
-        opacity: 100
+        opacity: 1
     });
     maps.push(map3);
 
     for (var n = 0; n < maps.length; n++) {
-
+        if (maps[n].aerial) {
+            maps[n].aerial.setVisibility(false);
+        };
         maps[n].events.register('movestart', n, moveStart);
         maps[n].events.register('moveend', n, moveEnd);
         maps[n].events.register('mousemove', n, mouseMove);
