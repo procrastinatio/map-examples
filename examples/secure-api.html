@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <title>GeoAdmin over HTTPS Example</title>
+        <link rel="stylesheet" href="../theme/default/style.css" type="text/css">
+        <link rel="stylesheet" href="style.css" type="text/css">
+        <link href='https://fonts.googleapis.com/css?family=Voltaire' rel='stylesheet' type='text/css'>
+
+    </head>
+    <body class="examples" onload="init()">
+        <h1 id="title">GeoAdmin over HTTPS Example</h1>
+        <div id="tags">ssl, secure, geoadmin, mf-chsdi,api, openlayers</div>
+        <div class="content">
+        <p id="shortdesc">
+            Demonstrate how to use GeoAdmin API in an HTTPS webpage.
+        </p>
+        <div id="map" class="smallmap"></div>
+        <div id="docs">
+            <p>This example use a local and slightly modified version of the original <a href="http://api.geo.admin.ch/main/wsgi/build/api-debug.js" target="_blank">api.js</a>. The only modification is replacing <i>http</i> through <i>https</i> in the definition for the source of the tiles (search for <em>wmts_url</em>).<p>
+           <p>You will problably not see any tiles, unless you accept the self-signed certicates for the following hosts:
+            <ul>
+              <li><a href="https://wmts0.geo.admin.ch/1.0.0/ch.swisstopo.swissimage/default/20120809/21781/0/0/0.jpeg">https://wmts0.geo.admin.ch</a></li>
+              <li><a href="https://wmts1.geo.admin.ch/1.0.0/ch.swisstopo.swissimage/default/20120809/21781/0/0/0.jpeg">https://wmts1.geo.admin.ch</a>
+              <li><a href="https://wmts2.geo.admin.ch/1.0.0/ch.swisstopo.swissimage/default/20120809/21781/0/0/0.jpeg">https://wmts2.geo.admin.ch</a>
+              <li><a href="https://wmts3.geo.admin.ch/1.0.0/ch.swisstopo.swissimage/default/20120809/21781/0/0/0.jpeg">https://wmts3.geo.admin.ch</a>
+              <li>  <a href="https://wmts4.geo.admin.ch/1.0.0/ch.swisstopo.swissimage/default/20120809/21781/0/0/0.jpeg">https://wmts4.geo.admin.ch</a>
+              <li><a href="https://api.geo.admin.ch">https://api.geo.admin.ch</a>
+
+            </ul>
+            </p>
+            <p>Nota: this is a proof of concept and not intended for any production environment.</p>
+            <p>View the <a href="secure-api.js" target="_blank">secure-api.js</a> source to see how this is done.</p>
+        </div>
+        </div>  
+        <script src="secure-api.js"></script>
+    </body>
+</html>
