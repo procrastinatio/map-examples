@@ -1,0 +1,77 @@
+var map;
+
+String.prototype.format = function() {
+    var formatted = this;
+    for (var i = 0; i < arguments.length; i++) {
+        var regexp = new RegExp('\\{' + i + '\\}', 'gi');
+        formatted = formatted.replace(regexp, arguments[i]);
+    }
+    return formatted;
+};
+
+function init() {
+
+    function WMSGetTileUrl(coord, zoom, config) {
+        var proj = map.getProjection();
+        var zfactor = Math.pow(2, zoom);
+        var top = proj.fromPointToLatLng(new google.maps.Point(coord.x * 256 / zfactor, coord.y * 256 / zfactor));
+        var bot = proj.fromPointToLatLng(new google.maps.Point((coord.x + 1) * 256 / zfactor, (coord.y + 1) * 256 / zfactor));
+
+        var bbox = top.lng() + "," + bot.lat() + "," + bot.lng() + "," + top.lat();
+
+        var url = "http://wms.geo.admin.ch/?" + "LAYERS={0}&FORMAT=image/{1}&SRS=EPSG:4326&SERVICE=WMS&VERSION=1.1.1&REQUEST=GetMap" + "&STYLES=&BBOX={2}&WIDTH=256&HEIGHT=256";
+        url = url.format(config.layers, config.extension, bbox);
+
+        return url;
+
+    }
+
+    var TektonikType = new google.maps.ImageMapType({
+        isPng: true,
+        maxZoom: 20,
+        minZoom: 7,
+        name: "Lithologie",
+        tileSize: new google.maps.Size(256, 256),
+        credit: 'swisstopo',
+        getTileUrl: function(coord, zoom) {
+            var config = {
+                service: "http://wms.geo.admin.ch/",
+                layers: "ch.swisstopo.geologie-geotechnik-gk500-lithologie_hauptgruppen",
+                extension: "png"
+            };
+            var url = WMSGetTileUrl(coord, zoom, config);
+
+            return url;
+        }
+    });
+    //Define custom layer
+    var PixelkarteType = new google.maps.ImageMapType({
+        isPng: false,
+        maxZoom: 14,
+        minZoom: 7,
+        name: "Pixelkarte",
+        tileSize: new google.maps.Size(256, 256),
+        credit: 'swisstopo',
+        getTileUrl: function(coord, zoom) {
+
+            var url = "http://wmts.procrastinatio.org/1.0.0/" + "ch.swisstopo.pixelkarte-farbe/alternate/20120801/3395/{0}/{1}/{2}.jpeg".format(zoom, coord.y, coord.x);
+
+            return url;
+        }
+    });
+
+    map = new google.maps.Map(document.getElementById("map"), {
+        zoom: 10,
+        center: new google.maps.LatLng(46.94, 7.45),
+        mapTypeControlOptions: {
+            mapTypeIds: ['Pixelkarte', 'Lithologie', google.maps.MapTypeId.TERRAIN],
+            style: google.maps.MapTypeControlStyle.HORIZONTAL_BAR
+        }
+    });
+    map.mapTypes.set('Pixelkarte', PixelkarteType);
+    map.setMapTypeId('Pixelkarte');
+
+    map.mapTypes.set('Lithologie', TektonikType);
+
+
+}
