@@ -16,6 +16,10 @@ position:relative;
 margin:0 auto;
 }
 
+#coords {
+    font-family: "Courier New", Courier, monospace;
+    font-size: 0.8em;
+}
 /*
 ol,ul {
 list-style:none;
