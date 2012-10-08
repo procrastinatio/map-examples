@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <title>OpenLayers Example</title>
+        <link rel="stylesheet" href="../theme/default/style.css" type="text/css">
+        <link rel="stylesheet" href="style.css" type="text/css">
+        <link href='http://fonts.googleapis.com/css?family=Voltaire' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="lib/leaflet/leaflet.css" />
+        <!--[if lt IE 9]>
+            <link rel="stylesheet" href="lib/leaflet/leaflet.ie.css"/>
+        <![endif]-->
+
+    </head>
+    <body class="examples" onload="init()">
+        <h1 id="title">Leaflet Tiles reprojection</h1>
+        <div id="tags">leaflet, projection,wtms,tiles,geoadmin</div>
+        <div class="content">
+        <p id="shortdesc">
+            Using GeoAdmin WMTS tiles with the popular <a href="http://http://leaflet.cloudmade.com/" target="_blank">Leaflet</a>
+            library</p>
+        <div id="map" class="smallmap"></div>
+        <div id="coords" style="height: 1em"></div>
+        <div id="docs">
+            <p>Nice people from Kartena offer the possiblity to use<a href="http://blog.kartena.se/local-projections-in-a-world-of-spherical-mercator/" target="_blank">tiles using a local projection</a> into the Leaflet framework, which is sperical mercator.</p>
+            <p>View the <a href="leaflet-projection.js" target="_blank">leaflet-projection.js</a> source to see how this is done.</p>
+        </div>
+        </div> 
+        <script src="lib/leaflet/leaflet-0.3.1.js"></script>
+         <script src="./lib/proj4js-compressed.js"></script>
+         <script src="./lib/proj4leaflet.js"></script>
+         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+         <script src="./data/bln.js"></script>
+        <script src="leaflet-projection.js"></script>
+    </body>
+</html>
