@@ -1,6 +1,7 @@
 var map;
 var strategy;
 var geoevents;
+var popup;
 
 OpenLayers.Format.GeoEvent = OpenLayers.Class(OpenLayers.Format, {
     wgs84: new OpenLayers.Projection("EPSG:4326"),
@@ -9,7 +10,10 @@ OpenLayers.Format.GeoEvent = OpenLayers.Class(OpenLayers.Format, {
     read: function(obj) {
         var features = [];
         var geoevents = obj
-        var x,y,point,feature;
+        var x,
+        y,
+        point,
+        feature;
 
         for (var key in geoevents) {
             if (geoevents.hasOwnProperty(key)) {
@@ -19,11 +23,9 @@ OpenLayers.Format.GeoEvent = OpenLayers.Class(OpenLayers.Format, {
                 feature.geometry.transform(this.wgs84, this.lv03);
                 features.push(feature);
             }
-
         }
         return features;
     }
-
 });
 
 function init() {
@@ -51,7 +53,7 @@ function init() {
             var pix = 10;
 
             if (feature.cluster) {
-                pix = Math.min(feature.attributes.count, 15) + 5;
+                pix = Math.min(feature.attributes.count, 15) + 15;
             }
             return pix;
         }
@@ -59,29 +61,60 @@ function init() {
     var defaultStyleConfig = {
         pointRadius: "${radius}",
         label: "${count}",
+        count: "${count}",
         fontWeight: "bold",
         fontColor: "black",
         fontSize: "${radius}px",
         labelAlign: "cm",
         fontFamily: "Arial",
+        labelOutlineColor: "white",
+        labelOutlineWidth: 3,
         fillColor: "#ffeeee",
         fillOpacity: 0.8,
         strokeColor: "#cc6633",
         strokeWidth: "${width}",
         strokeOpacity: 0.8
     };
+
+    var inClusterFilter = new OpenLayers.Filter.Comparison({
+        type: OpenLayers.Filter.Comparison.GREATER_THAN,
+        property: "count",
+        value: 1,
+        });
+
+    var clusteredRule = new OpenLayers.Rule({
+        filter: inClusterFilter,
+        symbolizer: {
+            externalGraphic: "images/m1.png",
+            }
+
+    });
+
     var defaultStyle = new OpenLayers.Style(defaultStyleConfig, {
         context: context
     });
 
-    var temporaryStyle = new OpenLayers.Style(OpenLayers.Util.applyDefaults({
-        fillColor: "red",
-        fillOpacity: 0.8,
-        strokeColor: "#ff6666",
+    var defaulRule = new OpenLayers.Rule({
+        // apply this rule if no others apply
+        elseFilter: true,
+        symbolizer: {
+            externalGraphic: "images/eg.png",
+            graphicWidth: 26,
+            graphicHeight: 45,
+            graphicYOffset: -16, // shift graphic up 28 pixels
+        }
+    })
 
-        strokeOpacity: 0.8
-    }, defaultStyleConfig), {
-        context: context
+    defaultStyle.addRules([clusteredRule, defaulRule]);
+
+    var temporaryStyle = new OpenLayers.Style(
+        OpenLayers.Util.applyDefaults({
+            fillColor: "red",
+            fillOpacity: 0.8,
+            strokeColor: "#ff6666",
+            strokeOpacity: 0.8
+        }, defaultStyleConfig), {
+            context: context
     });
 
     var strategy = new OpenLayers.Strategy.Cluster({
@@ -97,11 +130,8 @@ function init() {
         })
     });
 
-    geoevents.addFeatures(features);
-
     map.addLayer(geoevents);
 
-    geoevents.removeFeatures(geoevents.features);
     geoevents.addFeatures(features);
 
     var highlightCtrl = new OpenLayers.Control.SelectFeature(geoevents, {
@@ -109,9 +139,12 @@ function init() {
         highlightOnly: true,
         renderIntent: "temporary",
         eventListeners: {
+            featurehighlighted: function(evt) {
+                var attributes = evt.feature.attributes;
 
-            featurehighlighted: function(feat) {
-                var attributes = feat.feature.attributes;
+                if (attributes.count > 1)
+                    return false;
+
                 var msg = '';
                 for (var prop in attributes) {
                     if (attributes.hasOwnProperty(prop))
@@ -121,9 +154,24 @@ function init() {
                         });
                 }
                 document.getElementById("desc").innerHTML = msg;
+                if (typeof popup != 'undefined') {
+                    popup.destroy();
+                }
+                popup = new OpenLayers.Popup("marker_tooltip", 
+                            evt.feature.geometry.getBounds().getCenterLonLat(), 
+                            new OpenLayers.Size(200, 75), 
+                            "<h5>" + attributes.post_title + "</h5>" + attributes.weitere_infos, 
+                            false);
+                popup.panMapIfOutOfView = true;
+                popup.autosize = true;
+                map.addPopup(popup);
+                popup.show();
             },
             featureunhighlighted: function() {
                 document.getElementById("desc").innerHTML = "";
+                if (popup) {
+                    popup.hide();
+                }
             }
         }
     });
@@ -131,10 +179,15 @@ function init() {
     var selectCtrl = new OpenLayers.Control.SelectFeature(geoevents, {
         clickout: true,
         eventListeners: {
-
             featurehighlighted: function(evt) {
-                if (!evt.feature.cluster)
-                window.location.href = evt.feature.attributes.post_permalink;
+                if (!evt.feature.cluster) {
+                    window.location.href = evt.feature.attributes.post_permalink;
+                } else {
+                    map.panTo(evt.feature.geometry.getBounds().getCenterLonLat());
+                    var zoom = map.getZoom();
+                    if (zoom < map.resolutions.length)
+                        map.zoomTo(zoom + 1);
+                }
             }
         }
     });
@@ -155,6 +208,6 @@ function init() {
         opacity: 0.5
     });
 
-    map.setCenter([671550,182300]);
+    map.setCenter([671550, 182300]);
 
 }
