@@ -26,9 +26,11 @@ function sweep() {
 }
     
 function initSlider() {
-    
-   var slider = document.createElement("div");
+    var visual = document.createElement("div");
+    visual.className = 'slider-visual';
+    var slider = document.createElement("div");
     slider.id = 'slider';
+    slider.appendChild(visual);
     map.div.appendChild(slider);
     slider.style.top = -map.size.h + "px";
     slider.style.left = (map.size.w * map.sliderPos) + "px";
