@@ -93,7 +93,7 @@ def parseHtml(html,ids):
 def getGitInfo(exampleDir, exampleName):
     orig = os.getcwd()
     os.chdir(exampleDir)
-    h = os.popen("git log -n 1 --pretty=format:'%an|%ai' " + exampleName)
+    h = os.popen("git show -s --format='%an|%ci' `git rev-list HEAD "+ exampleName +" | tail -n 1` --" )
     os.chdir(orig)
     log = h.read()
     h.close()
@@ -104,6 +104,7 @@ def getGitInfo(exampleDir, exampleName):
     td = parts[1].split(" ")
     td.insert(1, "T")
     d["date"] = "".join(td)
+    print exampleName, d["author"],d["date"]
     return d
     
 def createFeed(examples):
