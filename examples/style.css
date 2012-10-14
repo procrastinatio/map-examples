@@ -514,10 +514,15 @@ border-bottom-right-radius:.4em;
 z-index:1;
 }
 
+
+
 body > footer a:hover {
 color:#484848;
 }
 
+body > footer .credit {
+    float:right;
+}
 .global {
 margin-left:auto;
 margin-right:auto;
