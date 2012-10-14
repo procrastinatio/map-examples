@@ -33,7 +33,7 @@
 
     <h2>1/ First step: Using the CatalogTree with custom branches and adding a tree look-and-feel</h2>
 
-    <ul>
+    <ol>
       <li>Use the custom CSS (copy it from <a href="catalogtree.css">catalogtree.css</a>)</li>
 
       <li>Add the custom class to the CatalogTree with <em>cls: 'geoadmin-treepanel'</em></li>
@@ -42,17 +42,16 @@
       target="_blank">ids</a></li>
       <li>Build your own Catalogtree, have a look at the <em>App.catalogConfig.geodata1</em> to see in <a href="catalogtree.js">catalogtree-config.js</a> for an 
       example. Add it to the <em>CatalogTree</em> config object.</li>
-    </ul>
+    </ol>
 
-    <div id="menu" style="width: 400px; float:left">
-      <div id="catalogtree1" style="float: left; margin:10px !important;width:380px;">
+    <div id="menu" class="menu">
+      <div id="catalogtree1" class="catalogtree">
       </div>
 
-      <div id="layertree1" style=
-      "float: left;margin:10px !important;width:385px;height: 340px;"></div>
+      <div id="layertree1" class="layertree"></div>
     </div>
 
-    <div id="map1" class="smallmap" style="float:right"></div>
+    <div id="map1" class="smallmap" style="float:right; width: 500px"></div>
 
 
   <div style="clear:both"></div>
@@ -71,15 +70,14 @@
     see which parameters to add to the config object for each layer. 
   </ul>
 
-  <div id="menu" style="width: 400px; float:left">
-    <div id="catalogtree2" style="float: left; margin:10px !important;width:380px;">
+  <div id="menu"  class="menu">
+    <div id="catalogtree2"  class="catalogtree">
     </div>
 
-    <div id="layertree2" style=
-    "float: left;margin:10px !important;width:385px;height: 340px;"></div>
+    <div id="layertree2" class="layertree"></div>
   </div>
 
-  <div id="map2" class="smallmap" style="float:right"></div>
+  <div id="map2" class="smallmap" style="float:right;width: 500px;"></div>
 
   <div style="clear:both"></div>
 
@@ -88,15 +86,14 @@
   <p>If you want to add a vector layer, you have to overload the <em>GeoAdmin._Layers.prototype.createLayer</em> method to support your format.
   In this example, we use a KML layer (any  supported OpenLayers should be fine).</p>
 
-  <div id="menu" style="width: 400px; float:left">
-    <div id="catalogtree3" style="float: left; margin:10px !important;width:380px;">
+  <div id="menu"  class="menu">
+    <div id="catalogtree3"  class="catalogtree">
     </div>
 
-    <div id="layertree3" style=
-    "float: left;margin:10px !important;width:385px;height: 340px;"></div>
+    <div id="layertree3" class="layertree"></div>
   </div>
 
-  <div id="map3" class="smallmap" style="float:right"></div>
+  <div id="map3" class="smallmap" style="float:right; width: 500px;"></div>
 
   <div id="docs">
     <div style="clear:both"></div>

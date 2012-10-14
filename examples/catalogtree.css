@@ -1,3 +1,11 @@
+/* Style for the examples */
+
+.menu {width: 340px; float:left}
+.catalogtree {float: left; margin:10px !important;}
+.layertree {float: left;margin:10px !important;width:350px;height: 340px;}
+
+.smallmap {float:right; width: 500px;}
+
 /* catalog tree, styles taken from CHSDI TreePanel */
 
 .geoadmin-treepanel .treelayericon,
