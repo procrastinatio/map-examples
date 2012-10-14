@@ -15,6 +15,10 @@ if (!window.GeoAdmin) {
     window.GeoAdmin = {};
 }
 
+function isArray(obj) {
+    return Object.prototype.toString.call(obj) === '[object Array]';
+};
+
 function init() {
 
     OpenLayers.Lang.setCode('en');
@@ -113,7 +117,7 @@ function init() {
                 formatSuffix: config.format && config.format.split('/')[1].toLowerCase(),
                 dimensions: config.dimensions !== undefined ? config.dimensions: ['TIME'],
                 params: {
-                    'time': config.timestamp
+                    'time': options && options.timestamp !== undefined ? options.timestamp : isArray(config.timestamp) ? config.timestamp[0] : config.timestamp
                 },
                 projection: new OpenLayers.Projection('EPSG:21781'),
                 units: 'm',
@@ -178,6 +182,9 @@ function init() {
     // First step 
     map1 = new GeoAdmin.Map("map1", {
         doZoomToMaxExtent: true
+    });
+    map1.switchComplementaryLayer('ch.swisstopo.pixelkarte-grau', {
+        opacity: 1
     });
     var catalogtree1 = new GeoAdmin.CatalogTree({
         renderTo: "catalogtree1",
