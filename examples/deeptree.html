@@ -1,0 +1,52 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta name="viewport" content=
+  "width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+
+  <title>Deep hierarchy with a CatalogTree</title>
+  <link rel="stylesheet" href="../theme/default/style.css" type="text/css" />
+ 
+  <link href='http://fonts.googleapis.com/css?family=Voltaire' rel='stylesheet' type=
+  'text/css' />
+  <link rel="stylesheet" href="catalogtree.css" type="text/css" />
+</head>
+
+<body class="examples" onload="init()">
+  <h1 id="title">Deep tree CatalogTree GeoAdmin API Example</h1>
+
+  <div id="tags">
+    catalogtree, tree, geoadmin, openlayers
+  </div>
+
+  <div class="content">
+    <p id="shortdesc">More than 3 levels of hierachy in a GeoAdmin CatalogTree.</p>
+
+    <p>The <a href="http://api.geo.admin.ch/main/wsgi/doc/build/api/apidocs/CatalogTree.html">CatalogTree</a> is 
+    in no way limited to 3 levels. Arbitrary deep hierarchies may be displayed.
+    This <a href="http://api.geo.admin.ch/main/wsgi/doc/build/widgets/sdiwidgetsexamples2.html#catalog-tree">widget</a>
+    is really a <em>tree</em>, so it may also look like a real tree, and not like a super <em>accordion</em> like
+    in <a href="http://map.geo.admin.ch" target="_blank">map.geo.admin.ch</a></p>
+    <p>The custom tree is defined in the <em>App.catalogConfig.geodata</em>.</p>
+    <p>The buggy CSS is due to the aggressive style of the main CSS</p>
+
+    <div id="map" class="smallmap" style="float:left; width: 600px"></div>
+     <div id="catalogtree" class="catalogtree" style="background-color: white; width: 450px; height: 220px;
+     -moz-border-radius: 15px; border-radius: 15x; -webkit-border-radius: 15px; border: 1px solid black; padding: 15px;">
+      </div>
+  <div id="docs">
+   
+      <div style="clear:both"></div>
+    <p>View the <a href="deeptree.js" target="_blank">deeptree.js</a> source to see how this is done.</p>
+  </div>
+</div> 
+<script src="http://api.geo.admin.ch/loader.js" type="text/javascript"></script>
+<script src="deeptree.js" type="text/javascript"></script>
+ <link rel="stylesheet" href="style.css" type="text/css" />
+<script src="lib/_stats.js" type="text/javascript"></script>
+</body>
+</html>
