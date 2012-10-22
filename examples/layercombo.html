@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+        <title>LayerCombo for GeoAdmin Example</title>
+        <link rel="stylesheet" href="style.css" type="text/css">
+        <link href='http://fonts.googleapis.com/css?family=Voltaire' rel='stylesheet' type='text/css'>
+       
+   <body class="examples" onload="init()">
+        <h1 id="title">Geoadmin and a LayerCombo to change displayed layers</h1>
+        <div id="tags">layers, combobox, geoadmin</div> 
+        <div class="content">       
+        <p id="shortdesc">
+            This example use a very simple layer combobox to change the displayed layers.
+        </p>
+        <div id="selectCombo"></div>
+        <div id="map" class="smallmap"></div>
+        <div id="docs">
+            <p>Choose which layers from GeoAdmin you would like to display.</p>
+            <p>The layer list is build using the <a href="http://api.geo.admin.ch/main/wsgi/doc/build/services/sdiservices.html#layers">layers</a> service.</p>
+            <p>View the <a href="layercombo.js" target="_blank">layercombo.js</a> source to see how this is done.</p>
+        </div>
+        <script src="http://api.geo.admin.ch/loader.js?mode=light"></script>
+        <script src="./lib/GeoAdmin.LayerCombo.js"></script>
+        <script type="text/javascript" src="layercombo.js"></script>
+        <script src="lib/_stats.js" type="text/javascript"></script>
+    </body>
+</html>
+
