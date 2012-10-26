@@ -63,8 +63,14 @@ function init() {
         opacity: 1
     });
    // map.layers[0].div.style.display = "block";
+   var c = new  OpenLayers.Control.ArgParser();
+    var params = c.getParameters();
+    if (params.x && params.y && params.z) {
+        map.moveTo(new OpenLayers.LonLat(params.x, params.y), params.z)
+    } else {
+        map.zoomToExtent([497410,115985,502910,119485]);
+    };
 
-    map.zoomToExtent([497410,115985,502910,119485]);
     
     sweep();
     
