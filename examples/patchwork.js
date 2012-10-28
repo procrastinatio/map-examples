@@ -1,17 +1,3 @@
-if (typeof Object.keys != 'function') {
-
-    Object.prototype.keys = function(obj) {
-        var keys = [];
-        for (var key in obj) {
-            if (obj.hasOwnProperty(key))
-                keys.push(key);
-        }
-        return keys;
-    }
-}
-
-var lyr;
-
 GeoAdmin.PatchWork = OpenLayers.Class(OpenLayers.Layer.WMTS, {
 
     patchwork: [],
@@ -22,6 +8,7 @@ GeoAdmin.PatchWork = OpenLayers.Class(OpenLayers.Layer.WMTS, {
 
         var defaults = {
             name: 'Patchwork',
+            // Must be exisiting bodlayer_id, otherwise you have to add it to GeoAdmin layer list. Not nice
             layer: 'ch.swisstopo.swissboundaries3d-kanton-flaeche.fill',
             layername: 'ch.swisstopo.swissboundaries3d-kanton-flaeche.fill',
             version: "1.0.0",
@@ -33,8 +20,7 @@ GeoAdmin.PatchWork = OpenLayers.Class(OpenLayers.Layer.WMTS, {
             dimensions: ['TIME'],
             params: {
                 'time': 20111206
-                // You need this, 'default' won't work
-                },
+            },
             projection: new OpenLayers.Projection('EPSG:21781'),
             units: 'm',
             format: 'image/jpeg',
@@ -50,7 +36,7 @@ GeoAdmin.PatchWork = OpenLayers.Class(OpenLayers.Layer.WMTS, {
 
         var config = OpenLayers.Util.extend(options, defaults);
 
-        this.layers = config.patchwork.slice(0) || Object.keys(GeoAdmin.layers.layers);
+        this.layers = config.patchwork.slice(0) || Object.keys(GeoAdmin.layers.layers); 
 
         OpenLayers.Layer.WMTS.prototype.initialize.apply(this, [config]);
 
@@ -142,6 +128,7 @@ GeoAdmin.PatchWork = OpenLayers.Class(OpenLayers.Layer.WMTS, {
 });
 
 var map, layer;
+
 function init() {
      map = new GeoAdmin.Map("map", {
         doZoomToMaxExtent: true
@@ -152,8 +139,8 @@ function init() {
 
     map.zoomToExtent([544800, 158150, 757300, 245650]);
 
-    // Some and colourfull layers for the patchwrk
-    var patchwork = [
+    // Some and colourfull layers for the patchwork
+     var patchwork = [
         'ch.swisstopo.geologie-geologische_karte', 
         'ch.swisstopo.geologie-geotechnik-gk500-genese', 
         'ch.swisstopo.geologie-tektonische_karte', 
