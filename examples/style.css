@@ -459,6 +459,7 @@ margin-top: 0.5em;
 .examples  pre,.examples  code {
     font: 1em 'andale mono', 'lucida console', monospace;
     line-height:1.5;
+    font-size: 0.8em;
 }
 .examples a[href] {
     color: #436976;

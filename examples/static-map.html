@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+        <title>GeoAdmin Static Map Example</title>
+        <link rel="stylesheet" href="style.css" type="text/css">
+        <link href='http://fonts.googleapis.com/css?family=Voltaire' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="static-map.css" type="text/css">
+       
+   <body class="examples" onload="init()">
+        <h1 id="title">Geoadmin Static Map Example</h1>
+        <div id="tags">phantomjs, rasterize, heroku, static map</div> 
+        <div class="content">       
+        <p id="shortdesc">
+            Using PhantomJs to rasterize map content.
+        </p>
+        <div id="docs">
+            <p>Sometime you juste need to display a static map in a web page. With the help of a headless web browser like 
+            <a href="http://phantomjs.org/" target="_blank">PhantomJS</a> and a basic web service (here, 
+            <a href="http://flask.pocoo.org/" target="_blank">Flask</a> hosted on <a href="http://www.heroku.com/" target="_blank">Heroku></a>, 
+            you may rasterize any web site.</p>
+            <p>Try pasting a GeoAdmin Permalink (normale or shortened) and generate the image (may take a few seconds).</p>
+            <fieldset>
+              <form id="print">
+                <label class="inline">Permalink url:</label>
+                <input type=text name=url size=80  value="http://s.geo.admin.ch/27498582">
+                <input type="submit" id="submit"/>
+            </form> </fieldset>
+           <div id="printout" class="smallmap"><img src=""></div>
+           
+           <p>Copy-paste this code in your web page</p>
+           <div id="printout_url"></div>
+        <p>Or use it as a cheap static map
+        <pre> &lt;img src=&quot;http://radiant-taiga-3006.herokuapp.com/print?url=http%3A%2F%2Fs.geo.admin.ch%2F8924fbbc&quot; /&gt;</pre>
+        <img src="http://radiant-taiga-3006.herokuapp.com/print?url=http%3A%2F%2Fs.geo.admin.ch%2F91a0ec38&w=600&h=250" />
+  
+        <p>
+        <pre>&lt;img src=&quot;http://radiant-taiga-3006.herokuapp.com//print?url=http%3A%2F%2Fs.geo.admin.ch%2Feaeda09b&amp;w=450&amp;h=250&quot; /&gt;</pre>
+        <img src="http://radiant-taiga-3006.herokuapp.com/print?url=http%3A%2F%2Fs.geo.admin.ch%2Feaeda09b&w=450&h=300" />  
+            
+        </div>
+        <script src="http://code.jquery.com/jquery-1.8.2.js"></script>
+        <script src="static-map.js"></script>
+        <script src="lib/_stats.js" type="text/javascript"></script>
+    </body>
+</html>
+

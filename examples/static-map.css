@@ -1,0 +1,22 @@
+.loading {
+    background-color:#FFF;
+    background-image:url(images/loading.gif);
+    background-repeat:no-repeat;
+    background-position: center center;
+}
+
+div.loading img {
+    display: none;
+}
+#printout {
+    margin: auto;
+}
+#printout_url {
+    font-family: 'andale mono', 'lucida console', monospace;
+    font-size: 0.8em;
+    height: 50px;
+    width: 100%;
+    background-color: white;
+    border: 1px solid black;
+}
+
