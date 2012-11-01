@@ -14,7 +14,8 @@
 }
 
 .geoadmin-treepanel ul, .geoadmin-treepanel li {
- list-style: none; 
+ list-style: none;
+ margin-left: 0; 
 }
 .geoadmin-treepanel .x-tree-node-expanded .x-tree-node-icon {
     background-image: url("images/folder-open.gif");
@@ -194,5 +195,7 @@
 .olControlPanel {
     top: 282px !important;
 }
+
+
 
 
