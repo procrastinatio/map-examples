@@ -8,7 +8,10 @@
         <link rel="stylesheet" href="../theme/default/style.css" type="text/css">
         <link rel="stylesheet" href="style.css" type="text/css">
         <link href='https://fonts.googleapis.com/css?family=Voltaire' rel='stylesheet' type='text/css'>
-
+        <style>
+           .wrong {text-decoration: line-through;}
+           b {font-weight: bold;}
+        </style>
     </head>
     <body class="examples" onload="init()">
         <h1 id="title">GeoAdmin over HTTPS Example</h1>
@@ -20,8 +23,9 @@
         <div id="map" class="smallmap"></div>
         <div id="docs">
             <p>This example use a local and slightly modified version of the original <a href="http://api.geo.admin.ch/main/wsgi/build/api-debug.js" target="_blank">api.js</a>. The only modification is replacing <i>http</i> through <i>https</i> in the definition for the source of the tiles (search for <em>wmts_url</em>).<p>
-           <p>You will problably not see any tiles, unless you accept the self-signed certicates for the following hosts:
-            <ul>
+           <p><b>Update:</b> It appears that the <em>*.geo.admin.ch</em> uses now a trusted certificate. The only self-signed certificate you have to accepte is the one of this page.</p>
+           <p class="wrong">You will problably not see any tiles, unless you accept the self-signed certicates for the following hosts:
+            <ul class="wrong">
               <li><a href="https://wmts0.geo.admin.ch/1.0.0/ch.swisstopo.swissimage/default/20120809/21781/0/0/0.jpeg">https://wmts0.geo.admin.ch</a></li>
               <li><a href="https://wmts1.geo.admin.ch/1.0.0/ch.swisstopo.swissimage/default/20120809/21781/0/0/0.jpeg">https://wmts1.geo.admin.ch</a>
               <li><a href="https://wmts2.geo.admin.ch/1.0.0/ch.swisstopo.swissimage/default/20120809/21781/0/0/0.jpeg">https://wmts2.geo.admin.ch</a>

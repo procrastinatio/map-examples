@@ -5,7 +5,7 @@ var baseUrl = "https://api.geo.admin.ch/main/wsgi";
     if (window.location.protocol !== "https:")
           window.location.href = "https:" + window.location.href.substring(window.location.protocol.length);
     
-    var scriptSrc =   "lib/api-https.js";
+    var scriptSrc =   "lib/api.js";
         document.write('<scr' + 'ipt type="text/javascript" src="' + scriptSrc + '"></scr' + 'ipt>');
 
     var OpenLayersImgPath = baseUrl +"/GeoAdmin.ux/Map/img/";
