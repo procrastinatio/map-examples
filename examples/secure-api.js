@@ -23,12 +23,12 @@ var baseUrl = "https://api.geo.admin.ch/main/wsgi";
 })();
 
 function init() {
-    
-
-    
-      var api = new GeoAdmin.API();
-      api.createMap({
-                   div: "map"
+     var map = new GeoAdmin.Map("map", {doZoomToMaxExtent: true});
+     map.switchComplementaryLayer("ch.swisstopo.pixelkarte-farbe", {opacity: 1});
+     var swisssearch = new GeoAdmin.SwissSearchComboBox({
+         width: 500,
+         renderTo: "search",
+         map: map
       });
 }
 
