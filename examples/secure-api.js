@@ -5,7 +5,7 @@ var baseUrl = "https://api.geo.admin.ch/main/wsgi";
     if (window.location.protocol !== "https:")
           window.location.href = "https:" + window.location.href.substring(window.location.protocol.length);
     
-    var scriptSrc =   "lib/api-https.js";
+    var scriptSrc =   "lib/api.js";
         document.write('<scr' + 'ipt type="text/javascript" src="' + scriptSrc + '"></scr' + 'ipt>');
 
     var OpenLayersImgPath = baseUrl +"/GeoAdmin.ux/Map/img/";
@@ -23,12 +23,12 @@ var baseUrl = "https://api.geo.admin.ch/main/wsgi";
 })();
 
 function init() {
-    
-
-    
-      var api = new GeoAdmin.API();
-      api.createMap({
-                   div: "map"
+     var map = new GeoAdmin.Map("map", {doZoomToMaxExtent: true});
+     map.switchComplementaryLayer("ch.swisstopo.pixelkarte-farbe", {opacity: 1});
+     var swisssearch = new GeoAdmin.SwissSearchComboBox({
+         width: 500,
+         renderTo: "search",
+         map: map
       });
 }
 
