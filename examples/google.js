@@ -19,42 +19,45 @@ function init() {
 
         var bbox = top.lng() + "," + bot.lat() + "," + bot.lng() + "," + top.lat();
 
-        var url = "http://wms.geo.admin.ch/?" + "LAYERS={0}&FORMAT=image/{1}&SRS=EPSG:4326&SERVICE=WMS&VERSION=1.1.1&REQUEST=GetMap" + "&STYLES=&BBOX={2}&WIDTH=256&HEIGHT=256";
+        var url = config.service + "LAYERS={0}&FORMAT=image/{1}&SRS=EPSG:4326&SERVICE=WMS&VERSION=1.1.1&REQUEST=GetMap" + "&STYLES=&BBOX={2}&WIDTH=256&HEIGHT=256";
         url = url.format(config.layers, config.extension, bbox);
 
         return url;
 
     }
-
-    var TektonikType = new google.maps.ImageMapType({
+    var PixelkarteType = new google.maps.ImageMapType({
         isPng: true,
         maxZoom: 20,
         minZoom: 7,
-        name: "Lithologie",
+        name: "Pixelkarte",
         tileSize: new google.maps.Size(256, 256),
         credit: 'swisstopo',
         getTileUrl: function(coord, zoom) {
             var config = {
-                service: "http://wms.geo.admin.ch/",
-                layers: "ch.swisstopo.geologie-geotechnik-gk500-lithologie_hauptgruppen",
-                extension: "png"
+                service: "http://proxy-wxs.ign.fr/url/http:/api.geo.admin.ch/main/mapproxy/service?",
+                layers: "ch.swisstopo.pixelkarte-farbe",
+                extension: "jpeg"
             };
             var url = WMSGetTileUrl(coord, zoom, config);
 
             return url;
         }
     });
-    //Define custom layer
-    var PixelkarteType = new google.maps.ImageMapType({
-        isPng: false,
-        maxZoom: 14,
+    
+    var OrthophotoType = new google.maps.ImageMapType({
+        isPng: true,
+        maxZoom: 20,
         minZoom: 7,
-        name: "Pixelkarte",
+        name: "Orthophoto",
         tileSize: new google.maps.Size(256, 256),
         credit: 'swisstopo',
         getTileUrl: function(coord, zoom) {
-
-            var url = "http://wmts.procrastinatio.org/1.0.0/" + "ch.swisstopo.pixelkarte-farbe/alternate/20120801/3395/{0}/{1}/{2}.jpeg".format(zoom, coord.y, coord.x);
+            var config = {
+                service: "http://proxy-wxs.ign.fr/url/http:/api.geo.admin.ch/main/mapproxy/service?",
+                layers: "ch.swisstopo.swissimage",
+                extension: "jpeg"
+            };
+            var url = WMSGetTileUrl(coord, zoom, config);
 
             return url;
         }
@@ -64,14 +67,14 @@ function init() {
         zoom: 10,
         center: new google.maps.LatLng(46.94, 7.45),
         mapTypeControlOptions: {
-            mapTypeIds: ['Pixelkarte', 'Lithologie', google.maps.MapTypeId.TERRAIN],
+            mapTypeIds: ['Pixelkarte', 'Orthophoto', google.maps.MapTypeId.TERRAIN],
             style: google.maps.MapTypeControlStyle.HORIZONTAL_BAR
         }
     });
     map.mapTypes.set('Pixelkarte', PixelkarteType);
     map.setMapTypeId('Pixelkarte');
 
-    map.mapTypes.set('Lithologie', TektonikType);
+    map.mapTypes.set('Orthophoto', OrthophotoType);
 
 
 }
