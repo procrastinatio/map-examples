@@ -80,11 +80,8 @@ function init() {
         map: map,
 	// use a custom class to define the tre-like style
         cls: 'geoadmin-treepanel',
-        root: {
-            children: App.catalogConfig.geodata
-            //custom catalog tree config. If you omit this, you'll get 
-            // the one in map.geo.admin.ch
-            },
+        configCatalog: App.catalogConfig.geodata,  //custom catalog tree config. If you omit this, you'll get 
+                                                  // the one in map.geo.admin.ch
         singleUnfold: false
 
     });

@@ -190,10 +190,8 @@ function init() {
         renderTo: "catalogtree1",
         map: map1,
         cls: 'geoadmin-treepanel',  // use a custom class to define the tre-like style
-        root: {
-            children: App.catalogConfig.geodata1   //custom catalog tree config. If you omit this, you'll get 
+        configCatalog: App.catalogConfig.geodata1,   //custom catalog tree config. If you omit this, you'll get 
                                                    // the one in map.geo.admin.ch
-        },
         singleUnfold: false
 
     });
@@ -212,9 +210,7 @@ function init() {
         renderTo: "catalogtree2",
         map: map2,
         cls: 'geoadmin-treepanel',
-        root: {
-            children: App.catalogConfig.geodata2
-        },
+        configCatalog: App.catalogConfig.geodata2,
         singleUnfold: false
 
     });
@@ -234,9 +230,7 @@ function init() {
         renderTo: "catalogtree3",
         map: map3,
         cls: 'geoadmin-treepanel',
-        root: {
-            children: App.catalogConfig.geodata3
-        },
+        configCatalog: App.catalogConfig.geodata3,
         singleUnfold: false
 
     });
