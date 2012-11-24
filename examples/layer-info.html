@@ -1,0 +1,62 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+
+  <title>Custom LayerInfo GeoAdmin API Example</title>
+  <link rel="stylesheet" href="../theme/default/style.css" type="text/css" />
+ 
+  <link href='http://fonts.googleapis.com/css?family=Voltaire' rel='stylesheet' type='text/css' />
+
+</head>
+
+<body class="examples" onload="init()">
+  <h1 id="title">Custom LayerInfo GeoAdmin API Example</h1>
+
+  <div id="tags">catalogtree, tree, geoadmin, layerinfo, metadata, api, openlayers</div>
+
+  <div class="content">
+    <p id="shortdesc">Adding custom layer info (metadata) for custom layers the GeoAdmin API CatalogTree.</p>
+    
+    <p>If you add your own layers to <em>GeoAdmin.Map</em>, it would be nice to also display some metadata on these layers (LayerInfo
+    <img src="http://api.geo.admin.ch/main/wsgi/GeoAdmin.ux/images/info_button_black.png" /> button)</p>
+
+    <ol>
+      <li>To see how to add custom layers to the <a href="http://api.geo.admin.ch/main/wsgi/doc/build/api/apidocs/CatalogTree.html" target="_blank">CatalogTree</a> see the <a href="catalog.html" target="_blank">catalog</a> example.</li>
+
+      <li>In both the <a href="http://api.geo.admin.ch/main/wsgi/doc/build/api/apidocs/CatalogTree.html" target="_blank">CatalogTree</a> and the <a href="http://api.geo.admin.ch/main/wsgi/doc/build/api/apidocs/LayerTree.html" target="_blank">LayerTree</a>, add the name of the class you'll use to display the metadata to the <em>infoWindowClass</em> config option. By default, this is set to <em>GeoAdmin.BodSearchWindow</em>.</li>
+
+      <li>Create a class, <em>App.LayerInfo</em> in this example, that will request the metadata according to the type of the layer.</li>
+      
+      <li>The displayed layer <em>Main lithological groups (WMS)</em> is a custom layer not existing in <em>GeoAdmin</em> and it gets  it's metadata from a WMS GetLegendGraphic request to the originating server.</li>
+    </ol>
+
+    <div id="menu" class="menu">
+      <div id="catalogtree" class="catalogtree"></div>
+      <div id="layertree" class="layertree"></div>
+    </div>
+    <div id="map" class="smallmap" style="float:right; width: 500px"></div>
+
+
+  <div style="clear:both"></div>
+
+ 
+  <div id="docs">
+    <div style="clear:both"></div>
+
+    <p>View the <a href="layer-info.js" target="_blank">layer-info.js</a> and <a href="catalogtree-config.js" target="_blank">catalogtree-config.js</a> sources to see how
+    this is done.</p>
+  </div>
+</div> 
+<script src="http://api.geo.admin.ch/loader.js" type="text/javascript"></script>
+<script src="catalogtree-config.js" type="text/javascript"></script>
+<script src="layer-info.js" type="text/javascript"></script>
+ <link rel="stylesheet" href="style.css" type="text/css" />
+   <link rel="stylesheet" href="catalogtree.css" type="text/css" />
+<script src="lib/_stats.js" type="text/javascript"></script>
+</body>
+</html>
