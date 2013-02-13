@@ -4,7 +4,7 @@ function init() {
     var api = new GeoAdmin.API();
 
     // Proxy stuff to get GetCapabilities xml
-    OpenLayers.ProxyHost = (window.location.host == "localhost") ? "/cgi-bin/proxy.cgi?url=": "/cgi-bin/printproxy.cgi?url=";
+    OpenLayers.ProxyHost = (window.location.host == "localhost") ? "/cgi-bin/proxy.cgi?url=": "/cgi-bin/proxy?url=";
 
     map = api.createMap({
         height: 700,
@@ -25,6 +25,13 @@ function init() {
         layertype: "wmts"
     };
 
+    GeoAdmin.layers.layers['ch.swisstopo-karto.schneeschuhrouten'] = {
+        layer: "ch.swisstopo-karto.schneeschuhrouten",
+        capabilitiesNeeded: true,
+        url: "http://wmts.geo.admin.ch",
+        layertype: "wmts"
+    };
+
     GeoAdmin.layers.layers['ch.swisstopo-karto.hangneigung'] = {
         layer: "ch.swisstopo-karto.hangneigung",
         capabilitiesNeeded: true,
@@ -36,5 +43,6 @@ function init() {
         opacity: 0.7
     });
     lyr_ski = map.addLayerByName('ch.swisstopo-karto.skitouren');
+    lyr_schneeschuh = map.addLayerByName('ch.swisstopo-karto.schneeschuhrouten');
 }
 
