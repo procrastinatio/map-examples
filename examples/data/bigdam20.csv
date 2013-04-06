@@ -7,8 +7,8 @@ objectid,name,canton,volume,altitude,area,depth,type,year,height
 6543,Lago di Lei,Italie & Grisons,197,1931,4.12,133,Arch dam,1961,141
 6573,Lac des Dix,Valais,401,2365,3.65,227,Gravity dam,1961,285
 6513,Wohlensee,Berne,25,480,3.65,20,Gravity dam,1920,29
-6571,Klöntalersee,Glaris,56,847,3.29,47,,1910,30
-6510,Lac d'Émosson,Valais,227,1930,3.27,161,Arch dam,1974,180
+6510,Klöntalersee,Glaris,56,847,3.29,47,,1910,30
+6571,Lac d'Émosson,Valais,227,1930,3.27,161,Arch dam,1974,180
 6537,Grimselsee,Berne,103,1908,2.63,100,Arch dam,1932,114
 6582,Lac de Mauvoisin,Valais,211,1961,2.08,180,Arch dam,1957,250
 6532,Lai da Sontga Maria,Grisons,67,1908,1.77,86,Arch dam,1968,117

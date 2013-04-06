@@ -85,6 +85,9 @@ function init() {
         },
         'featureunselected': function(evt) {
             d3.select("#rect-" + evt.feature.attributes.objectid).style("fill", fillColor);
+        },
+        'loadend': function(evt) {
+              selectFeature.select(vec.features[3]);  
         }
     });
 
@@ -94,7 +97,7 @@ function init() {
         overview.controls[i].deactivate()
         var div = overview.controls[i].div;
         if (div) div.style.display = 'none';
-     }
+     } 
 
     var barWidth = 15;
     var width = (barWidth + 4) * 20 +20;
@@ -105,13 +108,12 @@ function init() {
         'width': width+20,
         'height': height,
         }).
-        style('border', '1px solid black').
         style('padding', '10px');
         
     svg.append('text')
     .attr({
       'class': 'title',
-      'x': width / 2,
+      'x': 40,
       'y': titleHeight / 2,
     })
     .text('Barrage lake area [km²]');
@@ -175,5 +177,14 @@ function init() {
         
 
     }); //end csv
+    
+    $(document).ready(function() {
+         $(function() {
+             $( ".draggable" ).draggable();
+          });
+    });
+    
+    
+    
 
 }
