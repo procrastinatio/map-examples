@@ -62,6 +62,7 @@ GeoAdmin.CadastralInfoBox = Ext.extend(GeoAdmin.SwissSearchComboBox, {
 });
 
 function init() {
+    OpenLayers.Lang.setCode(OpenLayers.Util.getParameters().lang || "de");
 
     var map = new GeoAdmin.Map("map", {
         doZoomToMaxExtent: true
