@@ -1,0 +1,56 @@
+
+body {
+    font-family: arial,sans,helvetica;  
+    font-size: 0.8em;
+}
+
+#tags, #shortdesc { display: none; }
+
+.content {margin: 50px;}
+
+#output {
+    width: 500px;
+    height: auto;
+    background-color: #ddd;
+    margin: 10px;
+    
+}
+
+#map {
+    width:500px;
+    height:340px;
+    border:1px solid grey;
+    padding: 0 0 0 0;
+    margin:10px !important;
+}
+
+#help {
+    width: 500px;
+    height: 120px;
+    background-color: #ddd;
+    
+    
+}
+
+@media screen {
+    .title {display: none}   
+    #print  {display: block} 
+}
+
+@media print {
+    .title {display: block}   
+    #print, #help  {display: none} 
+    
+    .tooltip_header {
+        border-bottom: solid 2px black;
+        background-color: white;
+    }
+    .tooltip_footer {
+       background-color: #ddd;
+       margin: 20px;
+       border: solid 1px black;
+        
+    }
+}
+
+
