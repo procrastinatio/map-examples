@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <title>GeoAdmin API Example</title>
+        <link rel="stylesheet" href="style.css" type="text/css">
+        <link href='http://fonts.googleapis.com/css?family=Voltaire' rel='stylesheet' type='text/css'>
+    </head>
+    <body class="examples" onload="init()">
+        <h1 id="title">Using pure OpenLayers WMTS GetCapibilites with GeoAdmin WMTS</h1>
+        <div id="tags">getcapabilities, wmts, openlayers</div>
+        <div class="content">
+        <p id="shortdesc">
+            Parsing WMTS GetCapabilities with OpenLayers
+        </p>
+        <div id="map" class="smallmap"></div>
+        <div id="output" style="padding: 10px; background-color: white;"></div>
+        <div id="docs">
+            <p>With OpenLayers, it is easy to configure a layer parsing an OGC WMTS GetCapabiities document.
+            Even layers with <em>DIMENSIONS</em> are easily configured, basically down to (using default):</p>
+            
+            <pre>
+            var layer = format.createLayer(capabilities, {
+                layer: "ch.bafu.bundesinventare-bln",
+                opacity: 0.7,
+                isBaseLayer: false
+            });
+            </pre>
+
+            <p>View the <a href="ol-wmts-capabilities.js" target="_blank">ol-wmts-capabilities.js</a> source to see how this is done.</p>
+            <p>Check the official <a href="http://api.geo.admin.ch/main/wsgi/doc/build/services/sdiservices.html#wmts" target="_blank">documentation</a> for more details.</p>
+            <p>Do not forget to add the <em>pro4js</em> library and add the definition for <em>EPSG:21781</em> (LV03)!</p>
+            
+            <p>N.B. You have to <a href="http://www.swisstopo.admin.ch/internet/swisstopo/en/home/products/services/web_services/webaccess.html" target="_blank">register</a> to use the WMTS service on your website.</p>
+            
+        </div>
+        </div> 
+        <script src="http://api.geo.admin.ch/main/wsgi/lib/proj4js/proj4js/lib/proj4js-compressed.js"></script>
+        <!-- <script src="http://api.geo.admin.ch/main/wsgi/lib/openlayers/lib/OpenLayers.js"></script> -->
+        <script src="http://api.geo.admin.ch/loader.js?mode=full"></script>
+        <script src="matrixDefs.js"></script>
+        <script type="text/javascript" src="ol-wmts-getcap.js"> </script>
+        <script src="lib/_stats.js" type="text/javascript"></script>
+    </body>
+</html>
+
