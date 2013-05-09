@@ -12,17 +12,18 @@
     </head>
     <body class="examples" onload="init()">
         <h1 id="title">Heatmap GeoAdmin API Example</h1>
-        <div id="tags">heatmap, Субботник, geoadmin, earthquake</div>
+        <div id="tags">heatmap, Субботник, geoadmin, earthquake, wfs, wms</div>
         <div class="content">
         <p id="shortdesc">
             Recent earthquakes in Switerland as an heat map.
         </p>
-        <div id="map" class="smallmap"></div>
+        <div id="map" class="smallmap" style="width:510px"></div>
         <div id="docs">
-            <p>This example creates an heatmap from the latest earthquake in Switzerland.</p>
+            <p>This example creates an heatmap from the latest earthquake in Switzerland. Obviously, Wallis
+            is the most active region. Unfortunately, the WFS data do not hold the earthquake's magnitude.</p>
             <p>The code for the heatmap is from fredj's <a href="https://github.com/fredj/openlayers-heatmap">openlayers-heatmap</a></p>
             <br />
-            <p>The earthquake data are from <a href="http://www.seismo.ethz.ch/eq/latest/index_EN?time=utc" target="_blank">schweizerische Erdbebendienst</a>
+            <p>The earthquake data are from <a href="http://www.seismo.ethz.ch/eq/latest/index_EN?time=utc" target="_blank">Schweizerische Erdbebendienst</a> (both WMS and WFS).</p>
             <p>View the <a href="heatmap.js" target="_blank">heatmap.js</a> source to see how this is done.</p>
         </div>
         </div>  

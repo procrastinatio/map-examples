@@ -1,19 +1,16 @@
 var map,
 vector;
+
 function init() {
 
-    // Add the LV03 projection as it is not defined in OL
+    // Using an old definition
     Proj4js.defs["EPSG:9814"] = "+title=CH1903 / LV03 +proj=somerc +lat_0=46.95240555555556 +lon_0=7.439583333333333 +x_0=600000 +y_0=200000 +ellps=bessel +towgs84=674.374,15.056,405.346,0,0,0,0 +units=m +no_defs";
 
-    /*   
-OpenLayers.Renderer.Heatmap.prototype.initialize= function(name, options) {
-    OpenLayers.Layer.prototype.initialize.apply(this, arguments);
+    OpenLayers.Util.extend(OpenLayers.Lang.en, {
+        'sed.url': 'http://www.seismo.ethz.ch/index_EN',
+        'sed': 'http://www.seismo.ethz.ch/index_EN'
 
-   var sub = document.createElement('div');
-    sub.appendChild(this.canvas);
-    this.div.appendChild(sub); 
-
-    }; */
+    });
 
     OpenLayers.Renderer.Heatmap.prototype.drawPoint = function(geometry, style, featureId) {
         var pt = this.getLocalXY(geometry),
@@ -34,10 +31,20 @@ OpenLayers.Renderer.Heatmap.prototype.initialize= function(name, options) {
     vector = new OpenLayers.Layer.Vector("heatmap", {
         // use the heatmap renderer instead of the default one (SVG, VML or Canvas)
         renderers: ['Heatmap'],
-        protocol: new OpenLayers.Protocol.HTTP({
-            url: "data/earthquake.geojson",
-            format: new OpenLayers.Format.GeoJSON()
 
+        protocol: new OpenLayers.Protocol.HTTP({
+            url: "http://hitseddb.ethz.ch/cgi-bin/mapserv?MAP=/var/www/mapfile/sed/ch.map&",
+
+            params: {
+
+                typename: "eqch90d",
+                version: "1.0.0",
+                service: "WFS",
+                request: "GetFeature",
+                maxfeatures: 150
+
+            },
+            format: new OpenLayers.Format.GML()
             }),
         styleMap: new OpenLayers.StyleMap({
             "default": new OpenLayers.Style({
@@ -58,8 +65,8 @@ OpenLayers.Renderer.Heatmap.prototype.initialize= function(name, options) {
         strategies: [new OpenLayers.Strategy.Fixed()],
         eventListeners: {
             featuresadded: function(evt) {
-                this.map.zoomToExtent(this.getDataExtent());
-            }
+                //this.map.zoomToExtent(this.getDataExtent());
+                }
         }
     });
     map = new GeoAdmin.Map("map", {
@@ -69,6 +76,8 @@ OpenLayers.Renderer.Heatmap.prototype.initialize= function(name, options) {
         opacity: 1.0
     });
 
+    OpenLayers.ProxyHost = (window.location.host == "localhost") ? "/cgi-bin/proxy.cgi?url=": "/cgi-bin/proxy.cgi?url=";
+
     var wms = new OpenLayers.Layer.WMS("earthqake", "http://hitseddb.ethz.ch/cgi-bin/mapserv?MAP=/var/www/mapfile/sed/ch.map&", {
         layers: "eqch90d,timestamp,sedlogo",
         srs: "EPSG:9814",
@@ -76,10 +85,12 @@ OpenLayers.Renderer.Heatmap.prototype.initialize= function(name, options) {
         transparent: "true"
     }, {
         projection: new OpenLayers.Projection("EPSG:9814"),
-        singleTile: true
+        singleTile: true,
+        attribution: "Swiss Seismological Service"
     });
 
     map.addLayers([wms, vector]);
     vector.div.style.opacity = 0.7;
+    map.zoomToExtent([413767.3782955, -3605.391845, 923767.3782955, 346394.608155]);
 
 }
