@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <title>ESRI API + ESRI REST Service</title>
+         <link rel="stylesheet" href="http://serverapi.arcgisonline.com/jsapi/arcgis/3.5/js/dojo/dijit/themes/claro/claro.css">
+    <link rel="stylesheet" href="http://serverapi.arcgisonline.com/jsapi/arcgis/3.5/js/esri/css/esri.css">
+            <link href='http://fonts.googleapis.com/css?family=Voltaire' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="style.css" type="text/css">
+      
+        
+    <style>
+       html, body {
+            height: 100%;
+            width: 100%;
+            padding: 0;
+        }
+        .esriScalebar {
+            padding: 20px 20px;
+        }
+        
+        #map {
+            padding: 0;
+            border: solid 1px black;
+            width: 600px;
+            height: 400px;
+            margin: 50px;
+            position: relative;
+            /*top: 230px;
+            left: 130px;*/
+            margin: 20px 100px 20px;
+        }
+
+        #citationInfo {
+            position: absolute;
+             color: black;
+            /* text-shadow:2px 2px 2px #333333; */
+            background-color: #fff;
+            border: solid 1px black;
+            padding: 2px;
+            font-weight: bold;
+            font-size: 10pt;
+            left: 10px;
+            bottom: 10px;
+            z-Index: 999;
+        }
+        #info {
+           background-color: #fff;
+           width: 80px;
+           padding: 0 10px 0 10px;
+        
+        }
+        #output {
+           height: 200px;
+           
+        }
+        #output  table { margin: 1em; border-collapse: collapse; }
+        #output td,  #output th { padding: .3em; border: 1px #ccc solid; }
+        #output tr th { background: #ddd; }
+        #output b {font-weight: bold}
+       
+        #level {
+           background-color: #ffffff;
+           width: 600px; height: 100px;
+           overflow: auto;
+           padding: 5px;
+         }
+         
+    </style>
+    <script>var dojoConfig = { parseOnLoad:true }</script>
+     <script src="http://serverapi.arcgisonline.com/jsapi/arcgis/3.5/"></script>
+    <script src="matrixDefs.js"></script>
+    <script src="esri_identify.js"></script>
+    </head>
+    <body class="claro examples">
+		<h1 id="title">Musing with our try at the ESRI REST API</h1>
+		<div id="tags">esri, wmts, arcgis, api, rest, ogc, standard</div>
+    <div class="content">
+        <p id="shortdesc">
+            The ESRI REST API could eventually be an <a href="http://www.opengeospatial.org/">Opengeospatial (OGC)</a> Standard
+        </p>
+        <div id="docs">
+            <a href="http://resources.esri.com/help/9.3/arcgisserver/apis/rest/identify.html">Identify</a>ing features to test our implementation of ESRI ArcGIS Server REST API's.<br />
+            Click on the read areas, the <em>Landscape and natural monuments</em> and the orange ones, the <em>Games reserve</em><br />
+            <br />
+            For more info, check the following ESRI Web pages: <br />
+            <ul>
+                 <li>ArcGIS API for JavaScript - <a href="http://help.arcgis.com/en/webapi/javascript/arcgis/jsapi/identifyparameters.html">IdentifyParameters</a>
+                 <li>ArcGIS Server REST API <a href="http://help.arcgis.com/en/arcgisserver/10.0/apis/rest/identify.html">Identify</a> operation, for more details<br />
+            </ul><br />
+            View the <a href="esri_identify.js" target="_blank">esri_api.js</a> source to see how this is done.
+        </div>
+
+          <div id="map" dojotype="dijit.layout.ContentPane" region="center">
+                 <span id="info" style="position:absolute; right:150px; bottom:5px; font-size: 0.75em; color:#000; z-index:50;"></span>
+              <div id="citationInfo">
+                <a href="http://api.geo.admin.ch/1.0.0/WMTSCapabilities.xml" target="_blank">WMTS</a>
+                      served by <a href="http://www.geo.admin.ch/">GeoAdmin</a>
+              </div> 
+          </div><!-- map --> 
+    <!--      </div>  info window tabs -->
+        <div id="output"></div>
+     </div> <!-- content -->
+    <script src="lib/_stats.js" type="text/javascript"></script>    
+    </body>
+</html>
