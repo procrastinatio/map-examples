@@ -12,7 +12,7 @@ function init() {
         opacity: 1
     });
 
-    OpenLayers.ProxyHost = (window.location.host == "localhost") ? "/cgi-bin/proxy.cgi?url=" : "/cgi-bin/proxy";;
+    OpenLayers.ProxyHost = (window.location.host == "localhost") ? "/cgi-bin/proxy.cgi?url=" : "/cgi-bin/proxy?url=";
 
     var wms = new OpenLayers.Layer.WMS("vd",
         GeoAdmin.protocol + "//wms.procrastinatio.org", {
