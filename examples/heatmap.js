@@ -70,7 +70,7 @@ function init() {
         }
     });
     map = new GeoAdmin.Map("map", {
-        resolutions: [1000, 650.0, 500.0, 250.0, 100.0, 50.0, 20.0, 10.0]
+        resolutions: [1000, 650.0, 500.0, 250.0, 100.0]
         });
     map.switchComplementaryLayer('ch.swisstopo.pixelkarte-farbe', {
         opacity: 1.0
