@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <title>GeoAdmin API Example</title>
+        <link rel="stylesheet" href="../theme/default/style.css" type="text/css">
+        <link rel="stylesheet" href="style.css" type="text/css">
+        <link href='//fonts.googleapis.com/css?family=Voltaire' rel='stylesheet' type='text/css'>
+
+    </head>
+    <body class="examples" onload="init()">
+        <h1 id="title">GeoAdmin API loading Google Drive Files</h1>
+        <div id="tags">geoadmin, api, gpx, vector, google, drive, cross-domain, advanced</div>
+        <div class="content">
+        <p id="shortdesc">
+            Loading Google Drive's stored GPX into GeoAdmin Map.
+        </p>
+        <div id="map" class="smallmap"></div>
+              
+  
+        <div id="docs">
+            <h2>Settings</h2>
+            <p>Displaying GPX file stored in <a href="https://drive.google.com/" 
+            target="_blank"></a>Google Drive</a> into the GeoAdmin.</p>
+            <p>To see your file, you have to:</p>
+            <ul>
+               <li>Log in with your personnal gmail account</li>
+               <li>Upload a GPX file to your Google Drive or ask someone to grant you a read-access (no need
+               to make the file public!</li>
+               <li>Load or reload this page and "Authorize" (button) this application to look for GPX files on your Google Drive...)</li>
+               <li>The file content is read with the <em>downloadUrl</em>, not the <em>webContentLink</em></li>
+               <li>The application only looks for GPX files, see the code if you don't trust me.</li>
+               <li> On IE7, IE8, and IE9 you need to adjust Settings->Internet Options->Security->Custom Level and change security settings under "Miscellaneous" set "Access data sources across domains" to Enable</li>
+               
+            </ul>
+            <h2>GPX files</h2>
+           
+            <div id="output" style="margin-bottom: 2em"></div>
+             <input type="button" id="authorizeButton" style="display: none" value="Authorize" />
+             
+            <p>View the <a href="drive-auth.js" target="_blank">drive-auth.js</a> source to see how this is done.</p>
+        </div>
+        </div>
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
+        <script src="lib/jQuery.XDomainRequest.js"></script>
+        <script src="//api.geo.admin.ch/loader.js?mode=debug"></script>
+        <script src="drive-auth.js"></script>
+        
+        
+        
+         <script type="text/javascript" src="https://apis.google.com/js/client.js"></script>
+        <script src="lib/_stats.js" type="text/javascript"></script>
+    </body>
+</html>
