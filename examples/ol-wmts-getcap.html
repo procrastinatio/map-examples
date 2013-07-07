@@ -7,6 +7,16 @@
         <title>GeoAdmin API Example</title>
         <link rel="stylesheet" href="style.css" type="text/css">
         <link href='http://fonts.googleapis.com/css?family=Voltaire' rel='stylesheet' type='text/css'>
+        <style>
+            pre, #output {
+              overflow: auto;
+              border: solid 1px #9AACAE;
+              font-family: courier,Georgia,Serif;
+              background: #EFEFEF;
+              margin: 5px;
+              padding: 5px;
+            }
+        </style>
     </head>
     <body class="examples" onload="init()">
         <h1 id="title">Using pure OpenLayers WMTS GetCapibilites with GeoAdmin WMTS</h1>
@@ -16,9 +26,10 @@
             Parsing WMTS GetCapabilities with OpenLayers
         </p>
         <div id="map" class="smallmap"></div>
-        <div id="output" style="padding: 10px; background-color: white;"></div>
+        <h2>Output</h2>
+        <pre id="output"></pre>
         <div id="docs">
-            <p>With OpenLayers, it is easy to configure a layer parsing an OGC WMTS GetCapabiities document.
+            <p>With OpenLayers, it is easy to configure a layer parsing an OGC WMTS GetCapabilities document.
             Even layers with <em>DIMENSIONS</em> are easily configured, basically down to (using default):</p>
             
             <pre>
@@ -30,7 +41,7 @@
             </pre>
             <p>The topograhic map is a WMS layer and the layer with the polygons is the WMTS parsed layer one.</p>
 
-            <p>View the <a href="ol-wmts-capabilities.js" target="_blank">ol-wmts-capabilities.js</a> source to see how this is done.</p>
+            <p>View the <a href="ol-wmts-getcap.js" target="_blank">ol-wmts-cap.js</a> source to see how this is done.</p>
             <p>Check the official <a href="http://api.geo.admin.ch/main/wsgi/doc/build/services/sdiservices.html#wmts" target="_blank">documentation</a> for more details.</p>
             <p>Do not forget to add the <em>pro4js</em> library and add the definition for <em>EPSG:21781</em> (LV03)!</p>
             
@@ -39,8 +50,8 @@
         </div>
         </div> 
         <script src="http://api.geo.admin.ch/main/wsgi/lib/proj4js/proj4js/lib/proj4js-compressed.js"></script>
-        <!-- <script src="http://api.geo.admin.ch/main/wsgi/lib/openlayers/lib/OpenLayers.js"></script> -->
-        <script src="http://api.geo.admin.ch/loader.js?mode=full"></script>
+       <script src="http://api.geo.admin.ch/main/wsgi/lib/openlayers/lib/OpenLayers.js"></script>       
+         <!-- <script src="http://api.geo.admin.ch/loader.js?mode=full"></script> -->
         <script src="matrixDefs.js"></script>
         <script type="text/javascript" src="ol-wmts-getcap.js"> </script>
         <script src="lib/_stats.js" type="text/javascript"></script>

@@ -1,28 +1,45 @@
-var map, wmsLayer;
+var map, wmsLayer, data;
 var n=1;
 
 function log(msg) {
     var output = OpenLayers.Util.getElement('output');
     if (output) {
-        output.innerHTML += n+"/ " +msg + "<br />";
+        output.innerHTML += rpad(n+"/ " +msg, 88) + "[OK]<br />";
         n++;
     }
 }
 
+function lpad(txt, len) {
+    var empty = Array(len+1).join(" ")
+    return (empty + txt).slice(-len);
+}
+
+function rpad(txt, len) {
+    var p = (len - txt.length> 0) ? len-txt.length: 0; 
+    var empty = Array(p).join(" ");
+    return (txt + empty);
+}
+
 function init() {
+
+    var params = OpenLayers.Util.getParameters();
+
+    // var  data = params.data ? "WMTSCapabilities.xml" : "http://api.geo.admin.ch/1.0.0/WMTSCapabilities.xml";
+    var url = params.url ? params.url :  "http://api.geo.admin.ch/1.0.0/WMTSCapabilities.xml";
 
     var   format = new OpenLayers.Format.WMTSCapabilities();
 
     OpenLayers.ProxyHost = (window.location.host == "localhost") ? "/cgi-bin/proxy.cgi?url=": "/cgi-bin/proxy?url=";
 
     OpenLayers.Request.GET({
-        url: "http://api.geo.admin.ch/1.0.0/WMTSCapabilities.xml",
+        url: url, //"http://api.geo.admin.ch/1.0.0/WMTSCapabilities.xml",
         
         success: function(request) {
             var doc = request.responseXML;
             if (!doc || !doc.documentElement) {
                 doc = request.responseText;
             }
+            log("Loading GetCapabilities from " + url);
             log("Got document");
             var capabilities = format.read(doc);
             log("Document successfully parsed");
