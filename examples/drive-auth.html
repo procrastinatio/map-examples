@@ -4,15 +4,15 @@
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
         <meta name="apple-mobile-web-app-capable" content="yes">
-        <title>GeoAdmin API Example</title>
+        <title>Google Drive and GeoAdmin API Example</title>
         <link rel="stylesheet" href="../theme/default/style.css" type="text/css">
         <link rel="stylesheet" href="style.css" type="text/css">
         <link href='//fonts.googleapis.com/css?family=Voltaire' rel='stylesheet' type='text/css'>
 
     </head>
     <body class="examples" onload="init()">
-        <h1 id="title">GeoAdmin API loading Google Drive Files</h1>
-        <div id="tags">geoadmin, api, gpx, vector, google, drive, cross-domain, advanced</div>
+        <h1 id="title">GeoAdmin API loading GPX files from Google Drive</h1>
+        <div id="tags">geoadmin, gpx, vector, google, drive, cross-domain, cors, ie</div>
         <div class="content">
         <p id="shortdesc">
             Loading Google Drive's stored GPX into GeoAdmin Map.
@@ -28,8 +28,9 @@
             <ul>
                <li>Log in with your personnal gmail account</li>
                <li>Upload a GPX file to your Google Drive or ask someone to grant you a read-access (no need
-               to make the file public!</li>
-               <li>Load or reload this page and "Authorize" (button) this application to look for GPX files on your Google Drive...)</li>
+               to make the file public!)</li>
+               <li>Load or reload this page and "Authorize" (button) this application (procrastinatio's examples) 
+                   to look for GPX files on your Google Drive...)</li>
                <li>The file content is read with the <em>downloadUrl</em>, not the <em>webContentLink</em></li>
                <li>The application only looks for GPX files, see the code if you don't trust me.</li>
                <li> On IE7, IE8, and IE9 you need to adjust Settings->Internet Options->Security->Custom Level and change security settings under "Miscellaneous" set "Access data sources across domains" to Enable</li>
