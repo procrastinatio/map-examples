@@ -121,6 +121,7 @@ line-height:1.2em;
 h1,h2,h3,h4,h5,h6 {
 text-rendering:optimizelegibility;
 margin-bottom:1em;
+margin-top: 1em;
 font-weight:700;
 }
 
@@ -481,6 +482,7 @@ margin-top: 0.5em;
 .examples h2 {
     font-size: 120%;
     margin-bottom: 0.5em;
+    margin-top: 0.5em;
     border-bottom: 1px solid #aaa;
 }
 .examples h3 {
