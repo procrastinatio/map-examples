@@ -6,16 +6,10 @@ var SCOPES = 'https://www.googleapis.com/auth/drive.readonly';
 
 var gpx_files = {};
 
-if (window.location.protocol != 'https:') {
+/* if (window.location.protocol != 'https:') {
     window.location.href = 'https:' + window.location.href.substring(window.location.protocol.length);
-}
+} */
 
-XMLHttpRequest.prototype.readableHeaders = {};
-XMLHttpRequest.prototype.proxiedSetRequestHeader = XMLHttpRequest.prototype.setRequestHeader;
-XMLHttpRequest.prototype.setRequestHeader = function(header, value) {
-    this.proxiedSetRequestHeader(header, value);
-    this.readableHeaders[header] = value;
-};
 
 function handleClientLoad() {
     window.setTimeout(checkAuth, 1);
@@ -39,8 +33,6 @@ function handleAuthResult(authResult) {
     if (authResult && !authResult.error) {
         // Access token has been successfully retrieved, requests can be sent to the API.
         getItems();
-
-        
     } else {
 
         // No access token could be retrieved, show the button to start the authorization flow.
@@ -109,7 +101,6 @@ function listItems(resp) {
 }
 
 function toggleLayer(id) {
-    
 
     var file = gpx_files[id];
     title = file.title;
@@ -126,21 +117,8 @@ function toggleLayer(id) {
         }
         return false;
     }
-    //var file = {};
-    //file.downloadUrl = url;
     downloadFile(file, map.addGPXLayer);
-    //getData(file.dow, title);
-
 }
-
-
-$.support.cors = true;
-
-$.ajaxSetup({
-  beforeSend: function (jqXHR, settings) {
-    //console.log( settings.xhr().readableHeaders );
-  }
-});
 
 // xhr access denied
 // http://stackoverflow.com/questions/5793831/script5-access-is-denied-in-ie9-on-xmlhttprequest
@@ -172,39 +150,7 @@ function downloadFile(file, callback) {
 }
 
 
-function getData(url, title) {
-     var myToken = gapi.auth.getToken();
-     
-     
-   //console.log('getData, mytoken: ', myToken.access_token);
-
-   // http://stackoverflow.com/questions/10232017/ie9-jquery-ajax-with-cors-returns-access-is-denied
-    $.ajax({
-        type: 'GET',
-        cache: false,
-        url: url,
-        //dataType: "xml",
-        crossDomain: true,
-        headers: {
-            'Authorization': 'Bearer ' + myToken.access_token
-        },
-        success: function(data) {
-            //console.log('success', data);
-            map.addGPXLayer(data, title);
-        },
-        error: function(xhr, status, errorThrown) {
-           //console.log(errorThrown+'\n'+status+'\n'+xhr.statusText);
-           //console.log(xhr);
-       }
-    }).done(function(data){
-});;
-
-}
-
-
-
 function init() {
-    
     
     handleClientLoad();
 
@@ -230,7 +176,6 @@ function init() {
             }
 
         );
-
 
         var features = format.read(data);
 
