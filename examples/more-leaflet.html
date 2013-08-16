@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <title>Leaflet with geo.admin.ch tiles (III)</title>
+        <link rel="stylesheet" href="../theme/default/style.css" type="text/css">
+        <link rel="stylesheet" href="style.css" type="text/css">
+        <link href='http://fonts.googleapis.com/css?family=Voltaire' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="lib/leaflet/0.6.4/leaflet.css" />
+        <link rel="stylesheet" href="lib/leaflet/0.6.4/leaflet.draw.css" />
+        <!--[if lte IE 8]>
+           <link rel="stylesheet" href="lib/leaflet/0.6.4/leaflet.ie.css" />
+           <link rel="stylesheet" href="lib/leaflet/0.6.4/leaflet.draw.ie.css" />
+        <![endif]-->
+        <style>
+        body {
+            cursor: default;
+        }
+        </style>
+
+    </head>
+    <body class="examples" onload="init()">
+        <h1 id="title">Leaflet with geo.admin.ch tiles (III)</h1>
+        <div id="tags">leaflet, projection,wtms,tiles,geoadmin,geojson</div>
+        <div class="content">
+        <p id="shortdesc">
+            Using GeoAdmin WMTS tiles with the popular Leaflet library (III)</p>
+        <div id="map" class="smallmap"></div>
+        <div id="coords" style="height: 1em"></div>
+        <button type="button" onclick="clearLocalStorage()">reset</button>
+        <div id="docs">
+            <p>After a basic demo using leaflet an geo.admin.ch tiles in (<a href="leaflet-projection.html" target="_blank">part I</a>) and displaying GeoSJON data in (<a href="leaflet-projection-v2.html" target="_blank">part II</a>), we are now exploring Leaflet's <a href="https://github.com/Leaflet/Leaflet.draw/" target="_blank">draw plugin</a>.</p>
+            <p>Some feature are already added to the map, you may choose to edit or delete them, or add your own. The features are then stored in HTML5 <em>localStorage</em> (reload the page to see). You may also want to reset evereything to the pristine state hitting the <em>reset</em> button.</p>
+            <p>The grid is displaying the tile (x, y, z)</p>
+            <br />
+            <p>View the <a href="more-leaflet.js" target="_blank">more-leaflet.js</a> source to see how this is done.</p>
+        </div>
+        </div> 
+         <script src="./data/bln-style.js"></script>
+
+         <script src="http://cdnjs.cloudflare.com/ajax/libs/proj4js/1.1.0/proj4js-compressed.js" type="text/javascript"></script>
+         <script src="http://cdnjs.cloudflare.com/ajax/libs/proj4js/1.1.0/defs/EPSG21781.js" type="text/javascript"> </script>
+    
+         <script src="lib/leaflet/0.6.4/leaflet.js" type="text/javascript"></script>
+         <script src="lib/leaflet.draw.js" type="text/javascript"></script>
+         <script src="lib/kartena-proj4leaflets.js"></script>
+        
+        <script src="more-leaflet.js"></script>
+        <script src="lib/_stats.js" type="text/javascript"></script>
+    </body>
+</html>
