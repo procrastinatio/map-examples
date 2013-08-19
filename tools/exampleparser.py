@@ -113,7 +113,7 @@ def createFeed(examples):
     feed = doc.createElementNS(atomuri, "feed")
     feed.setAttribute("xmlns", atomuri)
     title = doc.createElementNS(atomuri, "title")
-    title.appendChild(doc.createTextNode("OpenLayers Examples"))
+    title.appendChild(doc.createTextNode("procrastinatio.org's web mapping examples"))
     feed.appendChild(title)
     link = doc.createElementNS(atomuri, "link")
     link.setAttribute("rel", "self")
