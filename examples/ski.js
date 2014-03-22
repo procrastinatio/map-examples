@@ -33,13 +33,14 @@ function init() {
 
     GeoAdmin.layers.init();
 
+    var wmts_url = window.location.protocol + "//wmts.geo.admin.ch";
 
     // Add the layers to the layer list. The missing information will be
     // read from the GetCapabilities document
     GeoAdmin.layers.layers['ch.swisstopo-karto.skitouren'] = {
         layer: "ch.swisstopo-karto.skitouren",
         capabilitiesNeeded: true,
-        url: "http://wmts.geo.admin.ch",
+        url: wmts_url,
         layertype: "wmts",
         name: "Skitouring routes",
         "datenherr": "SAC-CAS"
@@ -48,7 +49,7 @@ function init() {
     GeoAdmin.layers.layers['ch.swisstopo-karto.schneeschuhrouten'] = {
         layer: "ch.swisstopo-karto.schneeschuhrouten",
         capabilitiesNeeded: true,
-        url: "http://wmts.geo.admin.ch",
+        url: wmts_url,
         layertype: "wmts",
         name: "Snowshoes routes",
         "datenherr": "SAC-CAS"
@@ -57,7 +58,7 @@ function init() {
     GeoAdmin.layers.layers['ch.swisstopo-karto.hangneigung'] = {
         layer: "ch.swisstopo-karto.hangneigung",
         capabilitiesNeeded: true,
-        url: "http://wmts.geo.admin.ch",
+        url: wmts_url,
         layertype: "wmts",
         name: "Slope >30°",
         "datenehrr": "ch.swisstopo"
