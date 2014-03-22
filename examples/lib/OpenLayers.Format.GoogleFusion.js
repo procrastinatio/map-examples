@@ -19,13 +19,13 @@ OpenLayers.Format.GoogleFusion = OpenLayers.Class(OpenLayers.Format.GeoJSON, {
                 'externalProjection': new OpenLayers.Projection("EPSG:4326")
                 });  */
             var table = json.table;
-            var geom_idx = OpenLayers.Util.indexOf(table.cols, 'geometry');
-            var cols_nb = table.cols.length;
+            var geom_idx = OpenLayers.Util.indexOf(json.columns, 'geometry');
+            var cols_nb = json.columns.length;
 
             if (geom_idx > -1) {
                 results = [];
-                for (var i = 0, rows_nb = table.rows.length; i < rows_nb; i++) {
-                    var row = table.rows[i];
+                for (var i = 0, rows_nb = json.rows.length; i < rows_nb; i++) {
+                    var row = json.rows[i];
                     var geom = row[geom_idx];
                     if (geom) {
                         var feature = new OpenLayers.Feature.Vector();
@@ -33,13 +33,13 @@ OpenLayers.Format.GoogleFusion = OpenLayers.Class(OpenLayers.Format.GeoJSON, {
 
                             for (var c = 0; c < cols_nb; c++) {
                                 if (c != geom_idx) {
-                                    feature.attributes[table.cols[c]] = row[c];
+                                    feature.attributes[json.columns[c]] = row[c];
                                 }
 
                             }
                         };
                         try {
-                            feature.geometry = this.parseGeometry(geom);
+                            feature.geometry = this.parseGeometry(geom.geometry);
                             // format.read(geom, "Geometry"); // //
                         } catch (err) {
                             OpenLayers.Console.error(err);

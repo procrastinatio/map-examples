@@ -21,10 +21,11 @@ function init() {
     var vector = new OpenLayers.Layer.Vector("States", {
         strategies: [new OpenLayers.Strategy.Fixed()],
         protocol: new OpenLayers.Protocol.Script({
-            url: "https://www.google.com/fusiontables/api/query",
+            url: "https://www.googleapis.com/fusiontables/v1/query",
             callbackKey: 'jsonCallback',
             params: {
-                sql: 'select geometry from 1124880' // 3052311
+                sql: 'select geometry, Description from 1rwbKyIdUOV6uD11EhIPzQv4flXqhqtetBip7nRM',
+                key: 'AIzaSyCwy6vIEraIwQv8Tx6g1zMTPsPe8HLdr-M'
             } ,
             format: new OpenLayers.Format.GoogleFusion({
             ignoreExtraDims: true,
