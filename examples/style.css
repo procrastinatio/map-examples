@@ -491,6 +491,11 @@ margin-top: 0.5em;
     text-decoration: underline;
 }
 
+.gx-popup tr:nth-child(odd)             { background-color:#bbb; }
+.gx-popup tr:nth-child(even)              { background-color:#fff; }
+.gx-popup th {font-weight: bold; }
+.gx-popup row {width: 100%; }
+
 body > footer {
 font-size:.8em;
 color:#888;

@@ -1,6 +1,8 @@
 var api;
 
-GeoAdmin.API.prototype.addFusionTable = function (options) {
+GOOGLE_KEY = 'AIzaSyCwy6vIEraIwQv8Tx6g1zMTPsPe8HLdr-M';
+
+GeoAdmin.API.prototype.addFusionTable = function (options, callback) {
 
     var stylemap = options.stylemap || new OpenLayers.StyleMap({
 
@@ -20,22 +22,24 @@ GeoAdmin.API.prototype.addFusionTable = function (options) {
         })
     });
 
-    var jsonp_url = "https://www.google.com/fusiontables/api/query";
+    var jsonp_url = "https://www.googleapis.com/fusiontables/v1/query";
 
     var gft = new OpenLayers.Format.GoogleFusion({
         ignoreExtraDims: true,
         'internalProjection': this.map.projection,
         'externalProjection': new OpenLayers.Projection("EPSG:4326")
     });
-    Ext.ux.JSONP.request(jsonp_url, {
-        callbackKey: 'jsonCallback',
-        params: {
-            sql: options.sql
-        },
-        scope: this,
 
-        callback: function (json) {
+    var req = new OpenLayers.Protocol.Script({scope: this});
 
+   req.createRequest(jsonp_url, {
+            sql: options.sql,
+            typed: true, // for JSON-like type
+            key: GOOGLE_KEY
+
+        }, handleResponse);
+   function handleResponse(json) {
+    
             var features = gft.read(json);
             var vector = new OpenLayers.Layer.Vector("Google Fusion Table", {
                 styleMap: stylemap
@@ -43,8 +47,9 @@ GeoAdmin.API.prototype.addFusionTable = function (options) {
             vector.addFeatures(features, {
                 silent: false
             });
-            this.map.addLayer(vector);
-
+           callback( vector);
+  
+           
             var highlightCtrl = new OpenLayers.Control.SelectFeature(vector, {
                 hover: true,
                 highlightOnly: false,
@@ -52,16 +57,18 @@ GeoAdmin.API.prototype.addFusionTable = function (options) {
                 eventListeners: {
                     featurehighlighted: function (feat) {
                         var attributes = feat.feature.attributes;
-                        var msg = '';
+                        var msg = '<table>';
                         for (var prop in attributes) {
                             if (attributes.hasOwnProperty(prop))
-                            msg += OpenLayers.String.format("<b>${key}</b>=${value}<br />", {
+                            msg += OpenLayers.String.format("<tr><th>${key}</th><td>${value}</td></tr>", {
                                 'key': prop,
                                 'value': attributes[prop]
                             });
                         }
+                        msg += '</table>';
                         this.popup = new GeoExt.Popup({
                             map: this.map,
+                            title: attributes.bln_obj,
                             html: msg,
                             width: 200,
                             layer: vector,
@@ -77,10 +84,9 @@ GeoAdmin.API.prototype.addFusionTable = function (options) {
                     }
                 }
             });
-            this.map.addControl(highlightCtrl);
-            highlightCtrl.activate();
-        }
-    });
+            vector.map.addControl(highlightCtrl);
+            highlightCtrl.activate(); 
+        }; 
 };
 
 
@@ -93,7 +99,7 @@ function init() {
 
 
     api.addFusionTable({
-        sql: 'select geometry, Description from 1124880 where bln_gf > 15000',
+        sql: 'select geometry, bln_obj, bln_name, bln_gf, bln_version from 1rwbKyIdUOV6uD11EhIPzQv4flXqhqtetBip7nRM where bln_gf > 15000',
         stylemap: new OpenLayers.StyleMap({
             "default": new OpenLayers.Style({
                 strokeColor: "#333366",
@@ -102,6 +108,7 @@ function init() {
                 fillOpacity: 0.4
             })
         })
-    });
+    }, function(lyr) {api.map.addLayer(lyr);});
+   
 };
 
