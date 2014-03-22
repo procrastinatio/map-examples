@@ -1,6 +1,7 @@
 dojo.require("esri.map");
 dojo.require("esri.layers.wms");
 dojo.require("esri.geometry.Extent");
+dojo.require("esri.geometry.Point");
 dojo.require("esri.tasks.identify");
 dojo.require("dijit.layout.ContentPane");
 dojo.require("dijit.layout.TabContainer");
@@ -42,7 +43,8 @@ function init() {
             wkid: 21781
         })
     });
-    map.setZoom(15);
+    map.setZoom(14);
+    map.centerAt(esri.geometry.Point( {"x": 661349, "y": 191300.00000000067, "spatialReference": {"wkid": 21781 } }));
     dojo.connect(map, "onLoad", initFunctionality);
     dojo.connect(map, "onMouseMove", showCoordinates);
     dojo.connect(map, "onMouseDrag", showCoordinates);
@@ -51,8 +53,10 @@ function init() {
     map.addLayer(wmts);
 
     var wmsLayer = new esri.layers.WMSLayer("http://wms.geo.admin.ch/");
-    //set visible layers - jagdbangebiet and ILMN
-    wmsLayer.setVisibleLayers([159, 162]);
+    //set visible layers - parcs and ILMN
+    //wmsLayer.setVisibleLayers([175,188]);
+    // Looks like you may also use layer name now!
+    wmsLayer.setVisibleLayers(['ch.bafu.schutzgebiete-paerke_nationaler_bedeutung', 'ch.bafu.bundesinventare-bln']);
     wmsLayer.setImageFormat("png");
     map.addLayer(wmsLayer);
 
@@ -61,12 +65,19 @@ function init() {
 function initFunctionality(map) {
     dojo.connect(map, "onClick", doIdentify);
 
-    identifyTask = new esri.tasks.IdentifyTask("http://www.procrastinatio.org/esri/rest/services/bafu/MapServer");
+    identifyTask = new esri.tasks.IdentifyTask("http://api3.geo.admin.ch/rest/services/api/MapServer");
+
+
+    /* requested URL
+     * http://api3.geo.admin.ch/rest/services/api/MapServer/identify?f=json&geometry=%7B%22x%22%3A630249.9999999374%2C%22y%22%3A188859.37499999843%2C%22spatialReference%22%3A%7B%22wkid%22%3A21781%7D%7D&tolerance=3&returnGeometry=true&mapExtent=524999.99999979%2C89999.99999985998%2C825000.00000021%2C290000.00000014005&imageDisplay=600%2C400%2C96&geometryType=esriGeometryPoint&sr=21781&layers=all%3A1000%2C2000&callback=dojo.io.script.jsonp_dojoIoScript1._jsonpCallback
+     */
 
     identifyParams = new esri.tasks.IdentifyParameters();
     identifyParams.tolerance = 3;
     identifyParams.returnGeometry = true;
-    identifyParams.layerIds = [1000, 2000];
+    //identifyParams.layerIds = [1000, 2000];
+    // Within api3.geo.admin.ch, ids are not number but names. Looks like it also work...
+    identifyParams.layerIds = ['ch.bafu.schutzgebiete-paerke_nationaler_bedeutung', 'ch.bafu.bundesinventare-bln'];
     identifyParams.layerOption = esri.tasks.IdentifyParameters.LAYER_OPTION_ALL;
     identifyParams.width = map.width;
     identifyParams.height = map.height;
@@ -92,32 +103,35 @@ function doIdentify(evt) {
 }
 
 function addToMap(idResults, evt) {
-    bldgResults = {
+    parcsResults = {
         displayFieldName: null,
         features: []
     };
-    parcelResults = {
+    inventarResults = {
         displayFieldName: null,
         features: []
     };
 
     for (var i = 0, il = idResults.length; i < il; i++) {
         var idResult = idResults[i];
-        if (idResult.layerId === 1000) {
-            if (!bldgResults.displayFieldName) {
-                bldgResults.displayFieldName = idResult.displayFieldName
+        
+        if (idResult.layerBodId === 'ch.bafu.schutzgebiete-paerke_nationaler_bedeutung') {
+            if (!parcsResults.displayFieldName) {
+                parcsResults.displayFieldName = idResult.displayFieldName
             };
-            bldgResults.features.push(idResult.feature);
-        } else if (idResult.layerId === 2000) {
-            if (!parcelResults.displayFieldName) {
-                parcelResults.displayFieldName = idResult.displayFieldName
+            //console.log(idResult);
+            parcsResults.features.push(idResult.feature);
+        } else if (idResult.layerBodId === 'ch.bafu.bundesinventare-bln') {
+            
+            if (!inventarResults.displayFieldName) {
+                inventarResults.displayFieldName = idResult.displayFieldName
             };
-            parcelResults.features.push(idResult.feature);
+            inventarResults.features.push(idResult.feature);
         }
     }
-    var content = layerTabContent(bldgResults, "Landscapes and Natural Monuments");
-    content += layerTabContent(parcelResults, "Game reserves");
-
+    var content = layerTabContent(inventarResults, "ch.bafu.bundesinventare-bln");
+    content += layerTabContent(parcsResults, "ch.bafu.schutzgebiete-paerke_nationaler_bedeutung");
+    
     dojo.byId("output").innerHTML = content;
 
     //map.infoWindow.show(evt.screenPoint, map.getInfoWindowAnchor(evt.screenPoint));
@@ -127,28 +141,32 @@ function layerTabContent(layerResults, layerName) {
     var content = "";
 
     switch (layerName) {
-    case "Landscapes and Natural Monuments":
+    //case "Landscapes and Natural Monuments":
+    case "ch.bafu.bundesinventare-bln":
+      if ( layerResults.features.length) {
         content = "<b>" + layerName + "</b>: <i>Total features returned: " + layerResults.features.length + "</i>";
         content += "<table border='1'><tr><th>ID</th><th>Name</th></tr>";
        
         for (var i = 0, il = layerResults.features.length; i < il; i++) {
-            content += "<tr><td>" + layerResults.features[i].attributes['bgdi_id'] + "</td>";
+            //console.log(layerResults.features[i]);
+            content += "<tr><td>" + layerResults.features[i].attributes['bln_obj'] + "</td>";
             content += "<td>" + layerResults.features[i].attributes['bln_name'] + "</td>";
         }
         content += "</tr></table>";
+      }
         break;
-    case "Game reserves":
+    // Parks
+    case "ch.bafu.schutzgebiete-paerke_nationaler_bedeutung":
         content = "<b>" + layerName + "</b>: <i>Total features returned: " + layerResults.features.length + "</i>";
-        content += "<table border='1'><tr><th>ID</th><th>Name</th><th>Type</th><th>Category</th></tr>";
+        content += "<table border='1'><tr><th>Nr</th><th>Name</th><th>Status</th><th>Surface [ha]</th></tr>";
         for (var i = 0, il = layerResults.features.length; i < il; i++) {
-            content += "<tr><td>" + layerResults.features[i].attributes['jb_id'] + "</td>";
-            content += "<td>" + layerResults.features[i].attributes['jb_name'] + "</td>";
-            content += "<td>" + layerResults.features[i].attributes['jb_typ'] + "</td>";
-            content += "<td>" + layerResults.features[i].attributes['jb_kat'] + "</td>";
+            content += "<tr><td>" + layerResults.features[i].attributes['park_nr'] + "</td>";
+            content += "<td>" + layerResults.features[i].attributes['park_name'] + "</td>";
+            content += "<td>" + layerResults.features[i].attributes['park_statu'] + "</td>";
+            content += "<td>" + layerResults.features[i].attributes['park_gf'] + "</td>";
         }
         content += "</tr></table>";
         break;
-
     }
     return content;
 }
@@ -191,9 +209,9 @@ function initLayer() {
         },
 
         getTileUrl: function (level, row, col) {
-            var hosts = ['wmts0.geo.admin.ch', 'wmts1.geo.admin.ch', 'wmts2.geo.admin.ch']
+            var hosts = ['wmts0.geo.admin.ch', 'wmts1.geo.admin.ch', 'wmts2.geo.admin.ch', 'wmts3.geo.admin.ch', 'wmts4.geo.admin.ch']
             var host = hosts[Math.floor(Math.random() * hosts.length)];
-            return "http://" + host + "/1.0.0/ch.swisstopo.pixelkarte-farbe/default/20110401/21781/" + level + "/" + row + "/" + col + ".jpeg";
+            return "http://" + host + "/1.0.0/ch.swisstopo.pixelkarte-farbe/default/20140106/21781/" + level + "/" + row + "/" + col + ".jpeg";
         }
     });
 }
