@@ -1,0 +1,25 @@
+{
+  "name": "iv5xvm",
+  "version": "1.0.0",
+  "description": "swisstopo vector tiles, relief and mapbox styles\n",
+  "main": "index.html",
+  "scripts": {
+    "start": "parcel index.html --open",
+    "build": "parcel build index.html"
+  },
+  "dependencies": {
+    "ol": "7.3.0",
+    "ol-mapbox-style": "10.3.4"
+  },
+  "devDependencies": {
+    "@babel/core": "7.2.0",
+    "parcel-bundler": "^1.6.1"
+  },
+  "keywords": [
+    "mapbox",
+    "vector",
+    "swisstopo",
+    "tiles",
+    "style"
+  ]
+}
